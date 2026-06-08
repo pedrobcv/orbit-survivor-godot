@@ -1,0 +1,178 @@
+[gd_scene load_steps=7 format=3 uid="uid://a1b2c3d4e5f6g"]
+
+[ext_resource type="Script" path="res://scripts/ui/victory_screen.gd" id="1_7h8i9"]
+
+[sub_resource type="StyleBoxFlat" id="2_btn_normal"]
+bg_color = Color("#1a1a2e")
+border_color = Color("#4a9eff")
+border_width_left = 2
+border_width_right = 2
+border_width_top = 2
+border_width_bottom = 2
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="3_btn_hover"]
+bg_color = Color("#2a2a4e")
+border_color = Color("#8b5cf6")
+border_width_left = 2
+border_width_right = 2
+border_width_top = 2
+border_width_bottom = 2
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="4_btn_disabled"]
+bg_color = Color("#111122")
+border_color = Color("#333355")
+border_width_left = 2
+border_width_right = 2
+border_width_top = 2
+border_width_bottom = 2
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="5_panel_bg"]
+bg_color = Color("#0f0f1a")
+border_color = Color("#22d3ee")
+border_width_left = 2
+border_width_right = 2
+border_width_top = 2
+border_width_bottom = 2
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[node name="VictoryScreen" type="CanvasLayer"]
+script = ExtResource("1_7h8i9")
+
+[node name="Overlay" type="ColorRect" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+size = Vector2i(720, 1280)
+color = Color(0, 0, 0, 0)
+mouse_filter = 2
+
+[node name="VictoryPanel" type="Panel" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+position = Vector2i(110, 340)
+size = Vector2i(500, 600)
+theme_override_styles/panel = SubResource("5_panel_bg")
+
+[node name="TitleLabel" type="Label" parent="VictoryPanel"]
+unique_name_in_owner = true
+anchors_preset = 0
+position = Vector2i(50, 30)
+size = Vector2i(400, 60)
+theme_override_colors/font_color = Color("#22d3ee")
+theme_override_colors/font_outline_color = Color("#4a9eff")
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+vertical_alignment = 1
+text = "¡VICTORIA!"
+
+[node name="StarsContainer" type="HBoxContainer" parent="VictoryPanel"]
+unique_name_in_owner = true
+anchors_preset = 0
+position = Vector2i(100, 120)
+size = Vector2i(300, 60)
+alignment = 1
+
+[node name="Star1" type="TextureRect" parent="VictoryPanel/StarsContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2i(48, 48)
+size = Vector2i(48, 48)
+stretch_mode = 0
+
+[node name="Star2" type="TextureRect" parent="VictoryPanel/StarsContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2i(48, 48)
+size = Vector2i(48, 48)
+stretch_mode = 0
+
+[node name="Star3" type="TextureRect" parent="VictoryPanel/StarsContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2i(48, 48)
+size = Vector2i(48, 48)
+stretch_mode = 0
+
+[node name="CrystalsLabel" type="Label" parent="VictoryPanel"]
+unique_name_in_owner = true
+anchors_preset = 0
+position = Vector2i(50, 220)
+size = Vector2i(400, 40)
+theme_override_colors/font_color = Color("#22d3ee")
+theme_override_colors/font_outline_color = Color("#0f0f1a")
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+text = "💎 0"
+
+[node name="TimeLabel" type="Label" parent="VictoryPanel"]
+unique_name_in_owner = true
+anchors_preset = 0
+position = Vector2i(50, 280)
+size = Vector2i(400, 40)
+theme_override_colors/font_color = Color("#ffffff")
+theme_override_colors/font_outline_color = Color("#0f0f1a")
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+text = "⏱ 00:00"
+
+[node name="NextLevelButton" type="Button" parent="VictoryPanel"]
+unique_name_in_owner = true
+anchors_preset = 0
+position = Vector2i(100, 380)
+size = Vector2i(300, 56)
+theme_override_colors/font_color = Color("#ffffff")
+theme_override_colors/font_hover_color = Color("#ffffff")
+theme_override_colors/font_outline_color = Color("#4a9eff")
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 22
+text = "SIGUIENTE NIVEL"
+theme_override_styles/normal = SubResource("2_btn_normal")
+theme_override_styles/hover = SubResource("3_btn_hover")
+theme_override_styles/pressed = SubResource("3_btn_hover")
+
+[node name="RetryButton" type="Button" parent="VictoryPanel"]
+unique_name_in_owner = true
+anchors_preset = 0
+position = Vector2i(100, 456)
+size = Vector2i(300, 56)
+theme_override_colors/font_color = Color("#ffffff")
+theme_override_colors/font_hover_color = Color("#ffffff")
+theme_override_colors/font_outline_color = Color("#4a9eff")
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 22
+text = "REINTENTAR"
+theme_override_styles/normal = SubResource("2_btn_normal")
+theme_override_styles/hover = SubResource("3_btn_hover")
+theme_override_styles/pressed = SubResource("3_btn_hover")
+
+[node name="LevelsButton" type="Button" parent="VictoryPanel"]
+unique_name_in_owner = true
+anchors_preset = 0
+position = Vector2i(100, 532)
+size = Vector2i(300, 56)
+theme_override_colors/font_color = Color("#ffffff")
+theme_override_colors/font_hover_color = Color("#ffffff")
+theme_override_colors/font_outline_color = Color("#4a9eff")
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 22
+text = "NIVELES"
+theme_override_styles/normal = SubResource("2_btn_normal")
+theme_override_styles/hover = SubResource("3_btn_hover")
+theme_override_styles/pressed = SubResource("3_btn_hover")
+theme_override_styles/disabled = SubResource("4_btn_disabled")

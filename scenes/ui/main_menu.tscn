@@ -1,0 +1,152 @@
+[gd_scene load_steps=7 format=3 uid="uid://b4m5m6n7o8p9q"]
+
+[ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_4x5y6"]
+
+[sub_resource type="StyleBoxFlat" id="2_btn_normal"]
+bg_color = Color("#1a1a2e")
+border_color = Color("#4a9eff")
+border_width_left = 2
+border_width_right = 2
+border_width_top = 2
+border_width_bottom = 2
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="3_btn_hover"]
+bg_color = Color("#2a2a4e")
+border_color = Color("#8b5cf6")
+border_width_left = 2
+border_width_right = 2
+border_width_top = 2
+border_width_bottom = 2
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="4_btn_disabled"]
+bg_color = Color("#111122")
+border_color = Color("#333355")
+border_width_left = 2
+border_width_right = 2
+border_width_top = 2
+border_width_bottom = 2
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="MainMenu" type="Control"]
+anchors_preset = 0
+size = Vector2i(720, 1280)
+script = ExtResource("1_4x5y6")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 0
+size = Vector2i(720, 1280)
+color = Color("#0f0f1a")
+
+[node name="TitleLabel" type="Label" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+position = Vector2i(60, 180)
+size = Vector2i(600, 80)
+theme_override_colors/font_color = Color("#ffffff")
+theme_override_colors/font_outline_color = Color("#4a9eff")
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 48
+horizontal_alignment = 1
+vertical_alignment = 1
+text = "ORBIT SURVIVOR"
+
+[node name="PlayButton" type="Button" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+position = Vector2i(210, 400)
+size = Vector2i(300, 56)
+theme_override_colors/font_color = Color("#ffffff")
+theme_override_colors/font_hover_color = Color("#ffffff")
+theme_override_colors/font_outline_color = Color("#4a9eff")
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 22
+text = "JUGAR"
+theme_override_styles/normal = SubResource("2_btn_normal")
+theme_override_styles/hover = SubResource("3_btn_hover")
+theme_override_styles/pressed = SubResource("3_btn_hover")
+theme_override_styles/disabled = SubResource("4_btn_disabled")
+
+[node name="LevelsButton" type="Button" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+position = Vector2i(210, 476)
+size = Vector2i(300, 56)
+theme_override_colors/font_color = Color("#ffffff")
+theme_override_colors/font_hover_color = Color("#ffffff")
+theme_override_colors/font_outline_color = Color("#4a9eff")
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 22
+text = "NIVELES"
+theme_override_styles/normal = SubResource("2_btn_normal")
+theme_override_styles/hover = SubResource("3_btn_hover")
+theme_override_styles/pressed = SubResource("3_btn_hover")
+theme_override_styles/disabled = SubResource("4_btn_disabled")
+
+[node name="ShopButton" type="Button" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+position = Vector2i(210, 552)
+size = Vector2i(300, 56)
+theme_override_colors/font_color = Color("#ffffff")
+theme_override_colors/font_hover_color = Color("#ffffff")
+theme_override_colors/font_outline_color = Color("#4a9eff")
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 22
+text = "TIENDA"
+theme_override_styles/normal = SubResource("2_btn_normal")
+theme_override_styles/hover = SubResource("3_btn_hover")
+theme_override_styles/pressed = SubResource("3_btn_hover")
+theme_override_styles/disabled = SubResource("4_btn_disabled")
+
+[node name="SettingsButton" type="Button" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+position = Vector2i(210, 628)
+size = Vector2i(300, 56)
+theme_override_colors/font_color = Color("#ffffff")
+theme_override_colors/font_hover_color = Color("#ffffff")
+theme_override_colors/font_outline_color = Color("#4a9eff")
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 22
+text = "CONFIGURACIÓN"
+theme_override_styles/normal = SubResource("2_btn_normal")
+theme_override_styles/hover = SubResource("3_btn_hover")
+theme_override_styles/pressed = SubResource("3_btn_hover")
+theme_override_styles/disabled = SubResource("4_btn_disabled")
+
+[node name="CreditsButton" type="Button" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+position = Vector2i(210, 704)
+size = Vector2i(300, 56)
+theme_override_colors/font_color = Color("#ffffff")
+theme_override_colors/font_hover_color = Color("#ffffff")
+theme_override_colors/font_outline_color = Color("#4a9eff")
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 22
+text = "CRÉDITOS"
+theme_override_styles/normal = SubResource("2_btn_normal")
+theme_override_styles/hover = SubResource("3_btn_hover")
+theme_override_styles/pressed = SubResource("3_btn_hover")
+theme_override_styles/disabled = SubResource("4_btn_disabled")
+
+[node name="StarParticles" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
+position = Vector2i(360, 640)
+amount = 80
+lifetime = 4.0
+preprocess = 0.0
+emitting = true
+one_shot = false
+local_coords = false

@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://bk8l9m0n1o2p3"]
+
+[ext_resource type="Script" path="res://scripts/effects/explosion_particles.gd" id="1_q4r5s"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial"]
+direction = Vector3(0, -1, 0)
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+angle_min = 0.0
+angle_max = 360.0
+angular_velocity_min = 0.0
+angular_velocity_max = 2.0
+scale_min = 2.0
+scale_max = 6.0
+color_ramp = null
+gravity = Vector3(0, 0, 0)
+lifetime_randomness = 0.3
+direction = Vector3(0, -1, 0)
+
+[node name="ExplosionParticles" type="GPUParticles2D"]
+script = ExtResource("1_q4r5s")
+emitting = false
+one_shot = true
+explosiveness = 1.0
+lifetime = 0.8
+amount = 24
+process_material = SubResource("ParticleProcessMaterial")
+draw_order = 1

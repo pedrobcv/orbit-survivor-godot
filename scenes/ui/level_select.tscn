@@ -1,0 +1,95 @@
+[gd_scene load_steps=7 format=3 uid="uid://c6d7e8f9g0h1i"]
+
+[ext_resource type="Script" path="res://scripts/ui/level_select.gd" id="1_2j3k4"]
+
+[sub_resource type="StyleBoxFlat" id="2_btn_normal"]
+bg_color = Color("#1a1a2e")
+border_color = Color("#4a9eff")
+border_width_left = 2
+border_width_right = 2
+border_width_top = 2
+border_width_bottom = 2
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="3_btn_hover"]
+bg_color = Color("#2a2a4e")
+border_color = Color("#8b5cf6")
+border_width_left = 2
+border_width_right = 2
+border_width_top = 2
+border_width_bottom = 2
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="4_btn_disabled"]
+bg_color = Color("#111122")
+border_color = Color("#333355")
+border_width_left = 2
+border_width_right = 2
+border_width_top = 2
+border_width_bottom = 2
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="LevelSelect" type="Control"]
+anchors_preset = 0
+size = Vector2i(720, 1280)
+script = ExtResource("1_2j3k4")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 0
+size = Vector2i(720, 1280)
+color = Color("#0f0f1a")
+
+[node name="BackButton" type="Button" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+position = Vector2i(20, 20)
+size = Vector2i(100, 40)
+theme_override_colors/font_color = Color("#ffffff")
+theme_override_colors/font_hover_color = Color("#ffffff")
+theme_override_colors/font_outline_color = Color("#4a9eff")
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 16
+text = "← ATRÁS"
+theme_override_styles/normal = SubResource("2_btn_normal")
+theme_override_styles/hover = SubResource("3_btn_hover")
+theme_override_styles/pressed = SubResource("3_btn_hover")
+
+[node name="TitleLabel" type="Label" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+position = Vector2i(60, 60)
+size = Vector2i(600, 60)
+theme_override_colors/font_color = Color("#ffffff")
+theme_override_colors/font_outline_color = Color("#4a9eff")
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 1
+vertical_alignment = 1
+text = "SELECCIONAR NIVEL"
+
+[node name="StarsLabel" type="Label" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+position = Vector2i(60, 130)
+size = Vector2i(600, 40)
+theme_override_colors/font_color = Color("#eab308")
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+vertical_alignment = 1
+text = "⭐ 0"
+
+[node name="LevelGrid" type="GridContainer" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+position = Vector2i(60, 190)
+size = Vector2i(600, 900)
+columns = 2

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://e9v0w1x2y3z4a"]
+
+[ext_resource type="Script" path="res://scripts/objects/crystal.gd" id="1_5b6c7"]
+
+[node name="Crystal" type="Area2D"]
+script = ExtResource("1_5b6c7")
+collision_layer = 4
+collision_mask = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D"]
+radius = 10.0

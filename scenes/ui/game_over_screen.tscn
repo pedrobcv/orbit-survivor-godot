@@ -1,0 +1,113 @@
+[gd_scene load_steps=7 format=3 uid="uid://h7i8j9k0l1m2n"]
+
+[ext_resource type="Script" path="res://scripts/ui/game_over_screen.gd" id="1_3o4p5"]
+
+[sub_resource type="StyleBoxFlat" id="2_btn_normal"]
+bg_color = Color("#1a1a2e")
+border_color = Color("#ef4444")
+border_width_left = 2
+border_width_right = 2
+border_width_top = 2
+border_width_bottom = 2
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="3_btn_hover"]
+bg_color = Color("#2a1a1a")
+border_color = Color("#ff6666")
+border_width_left = 2
+border_width_right = 2
+border_width_top = 2
+border_width_bottom = 2
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="4_btn_disabled"]
+bg_color = Color("#111122")
+border_color = Color("#333355")
+border_width_left = 2
+border_width_right = 2
+border_width_top = 2
+border_width_bottom = 2
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="5_panel_bg"]
+bg_color = Color("#0f0f1a")
+border_color = Color("#ef4444")
+border_width_left = 2
+border_width_right = 2
+border_width_top = 2
+border_width_bottom = 2
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[node name="GameOverScreen" type="CanvasLayer"]
+script = ExtResource("1_3o4p5")
+
+[node name="Overlay" type="ColorRect" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+size = Vector2i(720, 1280)
+color = Color(0, 0, 0, 0)
+mouse_filter = 2
+
+[node name="GameOverPanel" type="Panel" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+position = Vector2i(110, 340)
+size = Vector2i(500, 400)
+theme_override_styles/panel = SubResource("5_panel_bg")
+
+[node name="TitleLabel" type="Label" parent="GameOverPanel"]
+unique_name_in_owner = true
+anchors_preset = 0
+position = Vector2i(50, 40)
+size = Vector2i(400, 70)
+theme_override_colors/font_color = Color("#ef4444")
+theme_override_colors/font_outline_color = Color("#ef4444")
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 42
+horizontal_alignment = 1
+vertical_alignment = 1
+text = "GAME OVER"
+
+[node name="RetryButton" type="Button" parent="GameOverPanel"]
+unique_name_in_owner = true
+anchors_preset = 0
+position = Vector2i(100, 180)
+size = Vector2i(300, 56)
+theme_override_colors/font_color = Color("#ffffff")
+theme_override_colors/font_hover_color = Color("#ffffff")
+theme_override_colors/font_outline_color = Color("#ef4444")
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 22
+text = "REINTENTAR"
+theme_override_styles/normal = SubResource("2_btn_normal")
+theme_override_styles/hover = SubResource("3_btn_hover")
+theme_override_styles/pressed = SubResource("3_btn_hover")
+theme_override_styles/disabled = SubResource("4_btn_disabled")
+
+[node name="LevelsButton" type="Button" parent="GameOverPanel"]
+unique_name_in_owner = true
+anchors_preset = 0
+position = Vector2i(100, 256)
+size = Vector2i(300, 56)
+theme_override_colors/font_color = Color("#ffffff")
+theme_override_colors/font_hover_color = Color("#ffffff")
+theme_override_colors/font_outline_color = Color("#ef4444")
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 22
+text = "NIVELES"
+theme_override_styles/normal = SubResource("2_btn_normal")
+theme_override_styles/hover = SubResource("3_btn_hover")
+theme_override_styles/pressed = SubResource("3_btn_hover")
+theme_override_styles/disabled = SubResource("4_btn_disabled")

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://c9c0d1e2f3g4h"]
+
+[ext_resource type="Script" path="res://scripts/enemies/magnetic_zone.gd" id="1_5i6j7"]
+
+[node name="MagneticZone" type="Area2D"]
+script = ExtResource("1_5i6j7")
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D"]
+radius = 60.0

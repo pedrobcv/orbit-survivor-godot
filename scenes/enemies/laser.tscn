@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://eb5c6d7e8f9g0"]
+
+[ext_resource type="Script" path="res://scripts/enemies/laser.gd" id="1_h1i2j"]
+
+[node name="Laser" type="Area2D"]
+script = ExtResource("1_h1i2j")
+collision_layer = 2
+collision_mask = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D")
+position = Vector2(0.0, -50.0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D"]
+size = Vector2(4, 100)

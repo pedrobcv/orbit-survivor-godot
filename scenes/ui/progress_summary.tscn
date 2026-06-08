@@ -1,0 +1,140 @@
+[gd_scene load_steps=7 format=3 uid="uid://j1k2l3m4n5o6p"]
+
+[ext_resource type="Script" path="res://scripts/ui/progress_summary.gd" id="1_7q8r9"]
+
+[sub_resource type="StyleBoxFlat" id="2_btn_normal"]
+bg_color = Color("#1a1a2e")
+border_color = Color("#4a9eff")
+border_width_left = 2
+border_width_right = 2
+border_width_top = 2
+border_width_bottom = 2
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="3_btn_hover"]
+bg_color = Color("#2a2a4e")
+border_color = Color("#8b5cf6")
+border_width_left = 2
+border_width_right = 2
+border_width_top = 2
+border_width_bottom = 2
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="4_btn_disabled"]
+bg_color = Color("#111122")
+border_color = Color("#333355")
+border_width_left = 2
+border_width_right = 2
+border_width_top = 2
+border_width_bottom = 2
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="5_panel_bg"]
+bg_color = Color("#0f0f1a")
+border_color = Color("#4a9eff")
+border_width_left = 2
+border_width_right = 2
+border_width_top = 2
+border_width_bottom = 2
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[node name="ProgressSummary" type="CanvasLayer"]
+script = ExtResource("1_7q8r9")
+
+[node name="Overlay" type="ColorRect" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+size = Vector2i(720, 1280)
+color = Color(0, 0, 0, 0)
+mouse_filter = 2
+
+[node name="SummaryPanel" type="Panel" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+position = Vector2i(110, 340)
+size = Vector2i(500, 500)
+theme_override_styles/panel = SubResource("5_panel_bg")
+
+[node name="TitleLabel" type="Label" parent="SummaryPanel"]
+unique_name_in_owner = true
+anchors_preset = 0
+position = Vector2i(50, 30)
+size = Vector2i(400, 60)
+theme_override_colors/font_color = Color("#ffffff")
+theme_override_colors/font_outline_color = Color("#4a9eff")
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 1
+vertical_alignment = 1
+text = "PROGRESO"
+
+[node name="TotalStarsLabel" type="Label" parent="SummaryPanel"]
+unique_name_in_owner = true
+anchors_preset = 0
+position = Vector2i(50, 120)
+size = Vector2i(400, 50)
+theme_override_colors/font_color = Color("#eab308")
+theme_override_font_sizes/font_size = 28
+horizontal_alignment = 1
+vertical_alignment = 1
+text = "⭐ 0"
+
+[node name="TotalCrystalsLabel" type="Label" parent="SummaryPanel"]
+unique_name_in_owner = true
+anchors_preset = 0
+position = Vector2i(50, 190)
+size = Vector2i(400, 50)
+theme_override_colors/font_color = Color("#22d3ee")
+theme_override_font_sizes/font_size = 28
+horizontal_alignment = 1
+vertical_alignment = 1
+text = "💎 0"
+
+[node name="LevelsCompletedLabel" type="Label" parent="SummaryPanel"]
+unique_name_in_owner = true
+anchors_preset = 0
+position = Vector2i(50, 260)
+size = Vector2i(400, 50)
+theme_override_colors/font_color = Color("#ffffff")
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+text = "📊 0 / 10 niveles completados"
+
+[node name="BestTimeLabel" type="Label" parent="SummaryPanel"]
+anchors_preset = 0
+position = Vector2i(50, 330)
+size = Vector2i(400, 50)
+theme_override_colors/font_color = Color("#8b5cf6")
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+text = "⏱ Mejor tiempo: --:--"
+
+[node name="CloseButton" type="Button" parent="SummaryPanel"]
+unique_name_in_owner = true
+anchors_preset = 0
+position = Vector2i(100, 420)
+size = Vector2i(300, 56)
+theme_override_colors/font_color = Color("#ffffff")
+theme_override_colors/font_hover_color = Color("#ffffff")
+theme_override_colors/font_outline_color = Color("#4a9eff")
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 22
+text = "CERRAR"
+theme_override_styles/normal = SubResource("2_btn_normal")
+theme_override_styles/hover = SubResource("3_btn_hover")
+theme_override_styles/pressed = SubResource("3_btn_hover")
+theme_override_styles/disabled = SubResource("4_btn_disabled")

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1t2u3v4w5x6y"]
+
+[ext_resource type="Script" path="res://scripts/enemies/moving_enemy.gd" id="1_z7a8b"]
+
+[node name="MovingEnemy" type="Area2D"]
+script = ExtResource("1_z7a8b")
+collision_layer = 2
+collision_mask = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D"]
+radius = 14.0

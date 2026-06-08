@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://d6t7u8v9w0x1y"]
+
+[ext_resource type="Script" path="res://scripts/enemies/asteroid.gd" id="1_2z3a4"]
+
+[node name="Asteroid" type="Area2D"]
+script = ExtResource("1_2z3a4")
+collision_layer = 2
+collision_mask = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D"]
+radius = 14.0

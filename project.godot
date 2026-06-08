@@ -5,6 +5,7 @@
 config/name="Orbit Survivor"
 config/version="0.1.0"
 config/features=PackedStringArray("4.0")
+run/main_scene="res://scenes/ui/main_menu.tscn"
 
 [display]
 window/size/viewport_width=720
