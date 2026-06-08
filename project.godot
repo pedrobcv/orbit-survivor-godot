@@ -19,7 +19,7 @@ pointing/emulate_touch_from_mouse=true
 [autoload]
 SignalBus="*res://scripts/core/signals.gd"
 Globals="*res://scripts/core/globals.gd"
-GameManager="*res://scripts/core/game_manager.gd"
+GameManager="*res://scripts/managers/game_manager.gd"
 
 [rendering]
 quality/intended_usage/framebuffer_allocation=1
