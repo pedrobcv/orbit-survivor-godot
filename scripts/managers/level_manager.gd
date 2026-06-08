@@ -1,5 +1,5 @@
 extends Node
-class_name LevelManager
+## LevelManager
 
 ## Loads levels from JSON files stored in data/levels/.
 ## Emits signals with parsed level data for other systems to consume.

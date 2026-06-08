@@ -1,5 +1,5 @@
 extends Node
-class_name StarSystem
+## StarSystem
 
 ## Calculates star ratings per level based on completion time and death count.
 ## Returns 1, 2, or 3 stars depending on performance thresholds.

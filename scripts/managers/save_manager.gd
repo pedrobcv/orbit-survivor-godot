@@ -1,5 +1,5 @@
 extends Node
-class_name SaveManager
+## SaveManager
 
 ## Manages game progress persistence using FileAccess + JSON.
 ## Data is stored at user://orbit_survivor_save.json.

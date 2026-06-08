@@ -6,7 +6,6 @@ bus/0/solo = false
 bus/0/mute = false
 bus/0/bypass_fx = false
 bus/0/volume_db = 0.0
-bus/0/send = "Master"
 bus/0/effect = Array[AudioEffect]()
 
 bus/1/name = "SFX"

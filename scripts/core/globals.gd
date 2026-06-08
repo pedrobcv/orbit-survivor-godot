@@ -1,14 +1,13 @@
 extends Node
+class_name GameConstants
 ## Global game constants for Orbit Survivor.
 ## This autoload provides centralized access to game-wide values.
-
-class_name GameConstants
 
 # --- Scene Paths ---
 const MAIN_MENU_SCENE := "res://scenes/ui/main_menu.tscn"
 const LEVEL_SELECT_SCENE := "res://scenes/ui/level_select.tscn"
-const GAME_SCENE := "res://scenes/game/game.tscn"
-const SETTINGS_SCENE := "res://scenes/ui/settings.tscn"
+const GAME_SCENE := "res://scenes/levels/level_scene.tscn"
+const SETTINGS_SCENE := "res://scenes/ui/settings_screen.tscn"
 
 # --- Gameplay ---
 const PLAYER_SPEED := 400.0

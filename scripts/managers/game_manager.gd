@@ -51,17 +51,17 @@ func resume_game() -> void:
 ## Reloads the current level.
 func reload_level() -> void:
 	if level_manager:
-		var current := level_manager.get_current_level_data()
-		if current:
-			level_manager.load_level(current.get("id", ""))
+		var current_data = level_manager.get_current_level_data()
+		if current_data:
+			level_manager.load_level(current_data.get("id", ""))
 
 
 ## Loads the next level in sequence.
 func load_next_level() -> void:
 	if level_manager:
-		var current := level_manager.get_current_level_data()
-		if current and current.has("next_level_id"):
-			level_manager.load_level(current["next_level_id"])
+		var current_data = level_manager.get_current_level_data()
+		if current_data and current_data.has("next_level_id"):
+			level_manager.load_level(current_data["next_level_id"])
 
 
 ## Returns to the main menu (placeholder — override or connect externally).

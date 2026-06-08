@@ -1,5 +1,5 @@
 extends Node
-class_name AudioManager
+## AudioManager
 
 ## Manages sound effects and music playback using AudioStreamPlayer2D.
 ## Loads audio from assets/audio/. Silently skips missing sounds to avoid crashes.
