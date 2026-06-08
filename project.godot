@@ -21,6 +21,11 @@ pointing/emulate_touch_from_mouse=true
 SignalBus="*res://scripts/core/signals.gd"
 Globals="*res://scripts/core/globals.gd"
 GameManager="*res://scripts/managers/game_manager.gd"
+LevelManager="*res://scripts/managers/level_manager.gd"
+SaveManager="*res://scripts/managers/save_manager.gd"
+AudioManager="*res://scripts/managers/audio_manager.gd"
+StarSystem="*res://scripts/managers/star_system.gd"
+DifficultyManager="*res://scripts/managers/difficulty_manager.gd"
 
 [rendering]
 quality/intended_usage/framebuffer_allocation=1

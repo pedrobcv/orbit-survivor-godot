@@ -179,7 +179,7 @@ func _on_portal_reached(portal: Node) -> void:
 	_show_victory(stars)
 
 	# Emit level completed signal
-	SignalBus.level_completed.emit(_level_id, stars, _crystals_collected * GameConstants.CRYSTAL_SCORE_VALUE)
+	SignalBus.level_completed.emit(_level_id, stars, _crystals_collected * Globals.CRYSTAL_SCORE_VALUE)
 
 
 ## Called when a crystal is collected
@@ -208,7 +208,7 @@ func _on_level_selected(level_id: String) -> void:
 	# Reload this scene with the new level
 	_level_id = level_id
 	# Approach: change scene to game scene which will create a new LevelScene
-	var game_scene_path: String = GameConstants.GAME_SCENE
+	var game_scene_path: String = Globals.GAME_SCENE
 	if ResourceLoader.exists(game_scene_path):
 		get_tree().change_scene_to_file(game_scene_path)
 

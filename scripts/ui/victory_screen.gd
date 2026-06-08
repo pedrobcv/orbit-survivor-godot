@@ -37,7 +37,7 @@ func show_victory(level_id: String, completion_time: float, deaths: int, crystal
 	
 	# Calculate stars
 	_earned_stars = StarSystem.calculate_stars(level_id, completion_time, deaths, time_target)
-	_total_score = crystals * GameConstants.CRYSTAL_SCORE_VALUE
+	_total_score = crystals * Globals.CRYSTAL_SCORE_VALUE
 	
 	# Update display
 	title_label.text = "¡Victoria!"
