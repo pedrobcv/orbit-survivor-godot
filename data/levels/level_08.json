@@ -1,0 +1,61 @@
+{
+  "id": "level_08",
+  "name": "Campo Magnético",
+  "description": "Las zonas magnéticas alteran tu trayectoria",
+  "order": 8,
+  "unlock_requirement": "level_07",
+  "requires_key": false,
+  "time_target": 55.0,
+  "orbital_speed": 1.5,
+  "obstacle_speed_mult": 1.2,
+  "nodes": [
+    {
+      "id": "node_1",
+      "position": {"x": 200, "y": 560},
+      "orbits": [
+        {"radius": 75, "speed": 1.0, "direction": "clockwise"}
+      ],
+      "start_node": true
+    },
+    {
+      "id": "node_2",
+      "position": {"x": 360, "y": 700},
+      "orbits": [
+        {"radius": 80, "speed": 1.1, "direction": "counterclockwise"}
+      ],
+      "start_node": false
+    },
+    {
+      "id": "node_3",
+      "position": {"x": 520, "y": 560},
+      "orbits": [
+        {"radius": 90, "speed": 1.0, "direction": "clockwise"}
+      ],
+      "start_node": false
+    }
+  ],
+  "obstacles": [
+    {"id": "obs_01", "node_id": "node_1", "orbit_index": 0, "angle": 60, "size": 18, "type": "static"},
+    {"id": "obs_02", "node_id": "node_1", "orbit_index": 0, "angle": 240, "size": 18, "type": "static"},
+    {"id": "obs_03", "node_id": "node_2", "orbit_index": 0, "angle": 0, "size": 20, "type": "static"},
+    {"id": "obs_04", "node_id": "node_2", "orbit_index": 0, "angle": 180, "size": 20, "type": "static"},
+    {"id": "obs_05", "node_id": "node_3", "orbit_index": 0, "angle": 45, "size": 18, "type": "static"},
+    {"id": "obs_06", "node_id": "node_3", "orbit_index": 0, "angle": 225, "size": 18, "type": "static"}
+  ],
+  "crystals": [
+    {"id": "crystal_1", "node_id": "node_1", "orbit_index": 0, "angle": 90},
+    {"id": "crystal_2", "node_id": "node_2", "orbit_index": 0, "angle": 270},
+    {"id": "crystal_3", "node_id": "node_3", "orbit_index": 0, "angle": 0},
+    {"id": "crystal_4", "node_id": "node_3", "orbit_index": 0, "angle": 180}
+  ],
+  "portal": {"node_id": "node_3", "orbit_index": 0, "angle": 90},
+  "key": null,
+  "enemies": [],
+  "magnetic_zones": [
+    {"id": "mag_01", "node_id": "node_1", "position": {"x": 220, "y": 520}, "radius": 60, "strength": 1.5, "polarity": "attract", "color": "#4488FF"},
+    {"id": "mag_02", "node_id": "node_3", "position": {"x": 500, "y": 500}, "radius": 50, "strength": 1.2, "polarity": "repel", "color": "#FF8844"}
+  ],
+  "lasers": [],
+  "mines": [],
+  "stars_threshold": {"one_star": 0, "two_stars": 0, "three_stars": 0}
+}

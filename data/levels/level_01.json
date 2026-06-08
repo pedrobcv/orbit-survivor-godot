@@ -1,0 +1,32 @@
+{
+  "id": "level_01",
+  "name": "Primer Orbital",
+  "description": "Aprende a girar",
+  "order": 1,
+  "unlock_requirement": "none",
+  "requires_key": false,
+  "time_target": 30.0,
+  "orbital_speed": 1.0,
+  "obstacle_speed_mult": 1.0,
+  "nodes": [
+    {
+      "id": "node_1",
+      "position": {"x": 360, "y": 640},
+      "orbits": [
+        {"radius": 100, "speed": 1.0, "direction": "clockwise"}
+      ],
+      "start_node": true
+    }
+  ],
+  "obstacles": [],
+  "crystals": [
+    {"id": "crystal_1", "node_id": "node_1", "orbit_index": 0, "angle": 90}
+  ],
+  "portal": {"node_id": "node_1", "orbit_index": 0, "angle": 270},
+  "key": null,
+  "enemies": [],
+  "magnetic_zones": [],
+  "lasers": [],
+  "mines": [],
+  "stars_threshold": {"one_star": 0, "two_stars": 0, "three_stars": 0}
+}

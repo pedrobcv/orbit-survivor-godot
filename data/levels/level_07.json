@@ -1,0 +1,59 @@
+{
+  "id": "level_07",
+  "name": "Lluvia de Asteroides",
+  "description": "Múltiples trayectorias cruzadas",
+  "order": 7,
+  "unlock_requirement": "level_06",
+  "requires_key": false,
+  "time_target": 55.0,
+  "orbital_speed": 1.5,
+  "obstacle_speed_mult": 1.2,
+  "nodes": [
+    {
+      "id": "node_1",
+      "position": {"x": 200, "y": 560},
+      "orbits": [
+        {"radius": 80, "speed": 1.0, "direction": "clockwise"}
+      ],
+      "start_node": true
+    },
+    {
+      "id": "node_2",
+      "position": {"x": 360, "y": 640},
+      "orbits": [
+        {"radius": 90, "speed": 1.0, "direction": "counterclockwise"}
+      ],
+      "start_node": false
+    },
+    {
+      "id": "node_3",
+      "position": {"x": 520, "y": 560},
+      "orbits": [
+        {"radius": 85, "speed": 1.1, "direction": "clockwise"}
+      ],
+      "start_node": false
+    }
+  ],
+  "obstacles": [
+    {"id": "obs_01", "node_id": "node_2", "orbit_index": 0, "angle": 45, "size": 18, "type": "static"},
+    {"id": "obs_02", "node_id": "node_2", "orbit_index": 0, "angle": 225, "size": 18, "type": "static"}
+  ],
+  "crystals": [
+    {"id": "crystal_1", "node_id": "node_1", "orbit_index": 0, "angle": 0},
+    {"id": "crystal_2", "node_id": "node_2", "orbit_index": 0, "angle": 180},
+    {"id": "crystal_3", "node_id": "node_3", "orbit_index": 0, "angle": 90}
+  ],
+  "portal": {"node_id": "node_3", "orbit_index": 0, "angle": 270},
+  "key": null,
+  "enemies": [
+    {"id": "enemy_01", "type": "asteroid", "node_origin": "node_1", "orbit_index": 0, "angle": 0, "speed": 0.5, "direction": "clockwise", "size": 25},
+    {"id": "enemy_02", "type": "asteroid", "node_origin": "node_1", "orbit_index": 0, "angle": 180, "speed": 0.4, "direction": "counterclockwise", "size": 30},
+    {"id": "enemy_03", "type": "asteroid", "node_origin": "node_2", "orbit_index": 0, "angle": 90, "speed": 0.5, "direction": "clockwise", "size": 28},
+    {"id": "enemy_04", "type": "asteroid", "node_origin": "node_2", "orbit_index": 0, "angle": 270, "speed": 0.35, "direction": "counterclockwise", "size": 25},
+    {"id": "enemy_05", "type": "asteroid", "node_origin": "node_3", "orbit_index": 0, "angle": 45, "speed": 0.45, "direction": "clockwise", "size": 28}
+  ],
+  "magnetic_zones": [],
+  "lasers": [],
+  "mines": [],
+  "stars_threshold": {"one_star": 0, "two_stars": 0, "three_stars": 0}
+}

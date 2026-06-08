@@ -1,0 +1,49 @@
+{
+  "id": "level_06",
+  "name": "Sincronización Letal",
+  "description": "Esquiva los láseres sincronizados",
+  "order": 6,
+  "unlock_requirement": "level_05",
+  "requires_key": false,
+  "time_target": 50.0,
+  "orbital_speed": 1.4,
+  "obstacle_speed_mult": 1.1,
+  "nodes": [
+    {
+      "id": "node_1",
+      "position": {"x": 250, "y": 640},
+      "orbits": [
+        {"radius": 85, "speed": 1.0, "direction": "clockwise"}
+      ],
+      "start_node": true
+    },
+    {
+      "id": "node_2",
+      "position": {"x": 470, "y": 640},
+      "orbits": [
+        {"radius": 100, "speed": 1.1, "direction": "counterclockwise"}
+      ],
+      "start_node": false
+    }
+  ],
+  "obstacles": [
+    {"id": "obs_01", "node_id": "node_1", "orbit_index": 0, "angle": 90, "size": 18, "type": "static"},
+    {"id": "obs_02", "node_id": "node_2", "orbit_index": 0, "angle": 270, "size": 18, "type": "static"}
+  ],
+  "crystals": [
+    {"id": "crystal_1", "node_id": "node_1", "orbit_index": 0, "angle": 30},
+    {"id": "crystal_2", "node_id": "node_1", "orbit_index": 0, "angle": 150},
+    {"id": "crystal_3", "node_id": "node_2", "orbit_index": 0, "angle": 210},
+    {"id": "crystal_4", "node_id": "node_2", "orbit_index": 0, "angle": 330}
+  ],
+  "portal": {"node_id": "node_2", "orbit_index": 0, "angle": 180},
+  "key": null,
+  "enemies": [],
+  "magnetic_zones": [],
+  "lasers": [
+    {"id": "laser_01", "node_id": "node_1", "angle": 45, "length": 60, "width": 6, "phase": 0.0, "duration": 1.5, "interval": 3.0, "color": "#FF4444"},
+    {"id": "laser_02", "node_id": "node_2", "angle": 225, "length": 70, "width": 6, "phase": 1.5, "duration": 1.5, "interval": 3.0, "color": "#44FF44"}
+  ],
+  "mines": [],
+  "stars_threshold": {"one_star": 0, "two_stars": 0, "three_stars": 0}
+}

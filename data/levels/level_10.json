@@ -1,0 +1,82 @@
+{
+  "id": "level_10",
+  "name": "El Último Orbital",
+  "description": "Tres fases, un solo objetivo: sobrevivir",
+  "order": 10,
+  "unlock_requirement": "level_09",
+  "requires_key": false,
+  "time_target": 120.0,
+  "orbital_speed": 1.8,
+  "obstacle_speed_mult": 1.5,
+  "nodes": [
+    {
+      "id": "node_1",
+      "position": {"x": 180, "y": 540},
+      "orbits": [
+        {"radius": 70, "speed": 1.2, "direction": "clockwise"}
+      ],
+      "start_node": true
+    },
+    {
+      "id": "node_2",
+      "position": {"x": 360, "y": 460},
+      "orbits": [
+        {"radius": 80, "speed": 1.3, "direction": "counterclockwise"}
+      ],
+      "start_node": false
+    },
+    {
+      "id": "node_3",
+      "position": {"x": 360, "y": 800},
+      "orbits": [
+        {"radius": 75, "speed": 1.1, "direction": "clockwise"}
+      ],
+      "start_node": false
+    },
+    {
+      "id": "node_4",
+      "position": {"x": 540, "y": 640},
+      "orbits": [
+        {"radius": 90, "speed": 1.4, "direction": "counterclockwise"}
+      ],
+      "start_node": false
+    }
+  ],
+  "obstacles": [
+    {"id": "obs_01", "node_id": "node_1", "orbit_index": 0, "angle": 45, "size": 16, "type": "static"},
+    {"id": "obs_02", "node_id": "node_1", "orbit_index": 0, "angle": 180, "size": 16, "type": "static"},
+    {"id": "obs_03", "node_id": "node_2", "orbit_index": 0, "angle": 90, "size": 18, "type": "static"},
+    {"id": "obs_04", "node_id": "node_2", "orbit_index": 0, "angle": 270, "size": 18, "type": "static"},
+    {"id": "obs_05", "node_id": "node_3", "orbit_index": 0, "angle": 0, "size": 16, "type": "static"},
+    {"id": "obs_06", "node_id": "node_3", "orbit_index": 0, "angle": 180, "size": 16, "type": "static"},
+    {"id": "obs_07", "node_id": "node_4", "orbit_index": 0, "angle": 60, "size": 20, "type": "static"},
+    {"id": "obs_08", "node_id": "node_4", "orbit_index": 0, "angle": 240, "size": 20, "type": "static"}
+  ],
+  "crystals": [
+    {"id": "crystal_1", "node_id": "node_2", "orbit_index": 0, "angle": 0},
+    {"id": "crystal_2", "node_id": "node_2", "orbit_index": 0, "angle": 180},
+    {"id": "crystal_3", "node_id": "node_3", "orbit_index": 0, "angle": 90},
+    {"id": "crystal_4", "node_id": "node_3", "orbit_index": 0, "angle": 270},
+    {"id": "crystal_5", "node_id": "node_4", "orbit_index": 0, "angle": 45},
+    {"id": "crystal_6", "node_id": "node_4", "orbit_index": 0, "angle": 225}
+  ],
+  "portal": {"node_id": "node_4", "orbit_index": 0, "angle": 135},
+  "key": null,
+  "enemies": [
+    {"id": "enemy_01", "type": "asteroid", "node_origin": "node_1", "orbit_index": 0, "angle": 0, "speed": 0.6, "direction": "clockwise", "size": 22},
+    {"id": "enemy_02", "type": "asteroid", "node_origin": "node_2", "orbit_index": 0, "angle": 135, "speed": 0.5, "direction": "counterclockwise", "size": 25},
+    {"id": "enemy_03", "type": "asteroid", "node_origin": "node_4", "orbit_index": 0, "angle": 90, "speed": 0.55, "direction": "clockwise", "size": 24},
+    {"id": "enemy_04", "type": "drone", "node_origin": "node_3", "orbit_index": 0, "angle": 315, "speed": 0.7, "direction": "counterclockwise", "size": 18, "health": 4, "damage": 1}
+  ],
+  "magnetic_zones": [
+    {"id": "mag_01", "node_id": "node_2", "position": {"x": 320, "y": 420}, "radius": 55, "strength": 1.3, "polarity": "attract", "color": "#44AAFF"}
+  ],
+  "lasers": [
+    {"id": "laser_01", "node_id": "node_4", "angle": 180, "length": 80, "width": 6, "phase": 0.0, "duration": 2.0, "interval": 3.5, "color": "#FF4444"}
+  ],
+  "mines": [
+    {"id": "mine_01", "node_id": "node_1", "orbit_index": 0, "angle": 270, "radius": 12, "trigger_radius": 28, "damage": 2, "respawn_delay": 4.0},
+    {"id": "mine_02", "node_id": "node_4", "orbit_index": 0, "angle": 315, "radius": 12, "trigger_radius": 28, "damage": 2, "respawn_delay": 4.0}
+  ],
+  "stars_threshold": {"one_star": 0, "two_stars": 0, "three_stars": 0}
+}

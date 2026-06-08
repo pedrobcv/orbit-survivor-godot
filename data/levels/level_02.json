@@ -1,0 +1,38 @@
+{
+  "id": "level_02",
+  "name": "Dos Órbitas",
+  "description": "Navega entre anillos",
+  "order": 2,
+  "unlock_requirement": "level_01",
+  "requires_key": false,
+  "time_target": 35.0,
+  "orbital_speed": 1.2,
+  "obstacle_speed_mult": 0.8,
+  "nodes": [
+    {
+      "id": "node_1",
+      "position": {"x": 360, "y": 640},
+      "orbits": [
+        {"radius": 80, "speed": 1.0, "direction": "clockwise"},
+        {"radius": 150, "speed": 0.8, "direction": "counterclockwise"}
+      ],
+      "start_node": true
+    }
+  ],
+  "obstacles": [
+    {"id": "obs_01", "node_id": "node_1", "orbit_index": 0, "angle": 45, "size": 20, "type": "static"},
+    {"id": "obs_02", "node_id": "node_1", "orbit_index": 0, "angle": 180, "size": 20, "type": "static"},
+    {"id": "obs_03", "node_id": "node_1", "orbit_index": 1, "angle": 270, "size": 25, "type": "static"}
+  ],
+  "crystals": [
+    {"id": "crystal_1", "node_id": "node_1", "orbit_index": 0, "angle": 90},
+    {"id": "crystal_2", "node_id": "node_1", "orbit_index": 1, "angle": 180}
+  ],
+  "portal": {"node_id": "node_1", "orbit_index": 1, "angle": 0},
+  "key": null,
+  "enemies": [],
+  "magnetic_zones": [],
+  "lasers": [],
+  "mines": [],
+  "stars_threshold": {"one_star": 0, "two_stars": 0, "three_stars": 0}
+}

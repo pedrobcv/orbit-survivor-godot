@@ -1,0 +1,47 @@
+{
+  "id": "level_04",
+  "name": "Triple Anillo",
+  "description": "Tres órbitas, un destino",
+  "order": 4,
+  "unlock_requirement": "level_03",
+  "requires_key": false,
+  "time_target": 45.0,
+  "orbital_speed": 1.3,
+  "obstacle_speed_mult": 1.0,
+  "nodes": [
+    {
+      "id": "node_1",
+      "position": {"x": 360, "y": 640},
+      "orbits": [
+        {"radius": 60, "speed": 1.2, "direction": "clockwise"},
+        {"radius": 120, "speed": 0.9, "direction": "counterclockwise"},
+        {"radius": 180, "speed": 0.7, "direction": "clockwise"}
+      ],
+      "start_node": true
+    }
+  ],
+  "obstacles": [
+    {"id": "obs_01", "node_id": "node_1", "orbit_index": 0, "angle": 30, "size": 15, "type": "static"},
+    {"id": "obs_02", "node_id": "node_1", "orbit_index": 0, "angle": 150, "size": 15, "type": "static"},
+    {"id": "obs_03", "node_id": "node_1", "orbit_index": 0, "angle": 270, "size": 15, "type": "static"},
+    {"id": "obs_04", "node_id": "node_1", "orbit_index": 1, "angle": 60, "size": 20, "type": "static"},
+    {"id": "obs_05", "node_id": "node_1", "orbit_index": 1, "angle": 200, "size": 20, "type": "static"},
+    {"id": "obs_06", "node_id": "node_1", "orbit_index": 1, "angle": 320, "size": 20, "type": "static"},
+    {"id": "obs_07", "node_id": "node_1", "orbit_index": 2, "angle": 90, "size": 25, "type": "static"},
+    {"id": "obs_08", "node_id": "node_1", "orbit_index": 2, "angle": 180, "size": 25, "type": "static"},
+    {"id": "obs_09", "node_id": "node_1", "orbit_index": 2, "angle": 270, "size": 25, "type": "static"},
+    {"id": "obs_10", "node_id": "node_1", "orbit_index": 2, "angle": 0, "size": 25, "type": "static"}
+  ],
+  "crystals": [
+    {"id": "crystal_1", "node_id": "node_1", "orbit_index": 0, "angle": 90},
+    {"id": "crystal_2", "node_id": "node_1", "orbit_index": 1, "angle": 180},
+    {"id": "crystal_3", "node_id": "node_1", "orbit_index": 2, "angle": 270}
+  ],
+  "portal": {"node_id": "node_1", "orbit_index": 2, "angle": 45},
+  "key": null,
+  "enemies": [],
+  "magnetic_zones": [],
+  "lasers": [],
+  "mines": [],
+  "stars_threshold": {"one_star": 0, "two_stars": 0, "three_stars": 0}
+}

@@ -1,0 +1,26 @@
+; Engine configuration file.
+; Godot 4.x project configuration.
+
+[application]
+config/name="Orbit Survivor"
+config/version="0.1.0"
+config/features=PackedStringArray("4.0")
+
+[display]
+window/size/viewport_width=720
+window/size/viewport_height=1280
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/handheld/orientation="portrait"
+
+[input_devices]
+pointing/emulate_touch_from_mouse=true
+
+[autoload]
+SignalBus="*res://scripts/core/signals.gd"
+Globals="*res://scripts/core/globals.gd"
+GameManager="*res://scripts/core/game_manager.gd"
+
+[rendering]
+quality/intended_usage/framebuffer_allocation=1
+textures/vram_compression/import_etc2=true
