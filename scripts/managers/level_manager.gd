@@ -1,4 +1,5 @@
 extends Node
+class_name LevelManager
 ## LevelManager
 
 ## Loads levels from JSON files stored in data/levels/.

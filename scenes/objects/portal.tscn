@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0n1o2p3q4r5s"]
+[gd_scene load_steps=2 format=3]
 
 [ext_resource type="Script" path="res://scripts/objects/portal.gd" id="1_6t7u8"]
 

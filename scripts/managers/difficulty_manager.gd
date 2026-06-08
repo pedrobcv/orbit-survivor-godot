@@ -1,4 +1,5 @@
 extends Node
+class_name DifficultyManager
 ## DifficultyManager
 
 ## Scales game difficulty based on data from data/difficulty/scale.json.

@@ -1,5 +1,4 @@
 extends Node
-class_name SignalBus
 ## Central signal bus for Orbit Survivor.
 ## All cross-system communication happens through this autoload.
 

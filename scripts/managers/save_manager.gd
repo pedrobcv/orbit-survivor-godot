@@ -1,4 +1,5 @@
 extends Node
+class_name SaveManager
 ## SaveManager
 
 ## Manages game progress persistence using FileAccess + JSON.

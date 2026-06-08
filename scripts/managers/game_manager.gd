@@ -1,5 +1,4 @@
 extends Node
-class_name GameManager
 
 ## Central coordinator for all game managers.
 ## Orchestrates game flow without knowing internal details of other managers.
@@ -12,11 +11,11 @@ signal level_failed
 signal pause_toggled(is_paused: bool)
 
 # References to other managers (assigned externally or via autoload)
-var level_manager: LevelManager
-var save_manager: SaveManager
-var audio_manager: AudioManager
-var star_system: StarSystem
-var difficulty_manager: DifficultyManager
+var level_manager
+var save_manager
+var audio_manager
+var star_system
+var difficulty_manager
 
 var _is_paused: bool = false
 
@@ -27,7 +26,6 @@ func start_game() -> void:
 
 
 ## Ends the current game session (win or loss).
-## result: String describing the result (e.g. "victory", "defeat").
 func end_game(result: String = "") -> void:
 	game_over.emit()
 	if result == "victory":
@@ -64,6 +62,6 @@ func load_next_level() -> void:
 			level_manager.load_level(current_data["next_level_id"])
 
 
-## Returns to the main menu (placeholder — override or connect externally).
+## Returns to the main menu (placeholder).
 func go_to_menu() -> void:
 	pass

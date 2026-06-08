@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://d4q5r6s7t8u9v"]
+[gd_scene load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://scripts/levels/level_scene.gd" id="1_w0x1y"]
 [ext_resource type="Script" path="res://scripts/levels/camera_controller.gd" id="2_z2a3b"]

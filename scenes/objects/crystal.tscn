@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://e9v0w1x2y3z4a"]
+[gd_scene load_steps=2 format=3]
 
 [ext_resource type="Script" path="res://scripts/objects/crystal.gd" id="1_5b6c7"]
 

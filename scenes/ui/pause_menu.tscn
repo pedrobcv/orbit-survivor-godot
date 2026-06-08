@@ -1,10 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://e7f8g9h0i1j2k"]
+[gd_scene load_steps=7 format=3]
 
 [ext_resource type="Script" path="res://scripts/ui/pause_menu.gd" id="1_3l4m5"]
 
 [sub_resource type="StyleBoxFlat" id="2_btn_normal"]
-bg_color = Color("#1a1a2e")
-border_color = Color("#4a9eff")
+bg_color = Color(0.102, 0.102, 0.180)
+border_color = Color(0.290, 0.620, 1.000)
 border_width_left = 2
 border_width_right = 2
 border_width_top = 2
@@ -15,8 +15,8 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="3_btn_hover"]
-bg_color = Color("#2a2a4e")
-border_color = Color("#8b5cf6")
+bg_color = Color(0.165, 0.165, 0.306)
+border_color = Color(0.545, 0.361, 0.965)
 border_width_left = 2
 border_width_right = 2
 border_width_top = 2
@@ -27,8 +27,8 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="4_btn_disabled"]
-bg_color = Color("#111122")
-border_color = Color("#333355")
+bg_color = Color(0.067, 0.067, 0.133)
+border_color = Color(0.200, 0.200, 0.333)
 border_width_left = 2
 border_width_right = 2
 border_width_top = 2
@@ -39,8 +39,8 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="5_panel_bg"]
-bg_color = Color("#0f0f1a")
-border_color = Color("#4a9eff")
+bg_color = Color(0.059, 0.059, 0.102)
+border_color = Color(0.290, 0.620, 1.000)
 border_width_left = 2
 border_width_right = 2
 border_width_top = 2
@@ -72,8 +72,8 @@ unique_name_in_owner = true
 anchors_preset = 0
 position = Vector2i(50, 30)
 size = Vector2i(300, 60)
-theme_override_colors/font_color = Color("#ffffff")
-theme_override_colors/font_outline_color = Color("#4a9eff")
+theme_override_colors/font_color = Color(1.000, 1.000, 1.000)
+theme_override_colors/font_outline_color = Color(0.290, 0.620, 1.000)
 theme_override_constants/outline_size = 3
 theme_override_font_sizes/font_size = 36
 horizontal_alignment = 1
@@ -85,9 +85,9 @@ unique_name_in_owner = true
 anchors_preset = 0
 position = Vector2i(50, 120)
 size = Vector2i(300, 56)
-theme_override_colors/font_color = Color("#ffffff")
-theme_override_colors/font_hover_color = Color("#ffffff")
-theme_override_colors/font_outline_color = Color("#4a9eff")
+theme_override_colors/font_color = Color(1.000, 1.000, 1.000)
+theme_override_colors/font_hover_color = Color(1.000, 1.000, 1.000)
+theme_override_colors/font_outline_color = Color(0.290, 0.620, 1.000)
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 22
 text = "REANUDAR"
@@ -101,9 +101,9 @@ unique_name_in_owner = true
 anchors_preset = 0
 position = Vector2i(50, 196)
 size = Vector2i(300, 56)
-theme_override_colors/font_color = Color("#ffffff")
-theme_override_colors/font_hover_color = Color("#ffffff")
-theme_override_colors/font_outline_color = Color("#4a9eff")
+theme_override_colors/font_color = Color(1.000, 1.000, 1.000)
+theme_override_colors/font_hover_color = Color(1.000, 1.000, 1.000)
+theme_override_colors/font_outline_color = Color(0.290, 0.620, 1.000)
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 22
 text = "REINTENTAR"
@@ -117,9 +117,9 @@ unique_name_in_owner = true
 anchors_preset = 0
 position = Vector2i(50, 272)
 size = Vector2i(300, 56)
-theme_override_colors/font_color = Color("#ffffff")
-theme_override_colors/font_hover_color = Color("#ffffff")
-theme_override_colors/font_outline_color = Color("#4a9eff")
+theme_override_colors/font_color = Color(1.000, 1.000, 1.000)
+theme_override_colors/font_hover_color = Color(1.000, 1.000, 1.000)
+theme_override_colors/font_outline_color = Color(0.290, 0.620, 1.000)
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 22
 text = "MENÚ PRINCIPAL"

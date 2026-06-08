@@ -1,4 +1,5 @@
 extends Node
+class_name StarSystem
 ## StarSystem
 
 ## Calculates star ratings per level based on completion time and death count.

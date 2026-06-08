@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://c9c0d1e2f3g4h"]
+[gd_scene load_steps=2 format=3]
 
 [ext_resource type="Script" path="res://scripts/enemies/magnetic_zone.gd" id="1_5i6j7"]
 

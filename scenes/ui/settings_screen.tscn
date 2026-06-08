@@ -1,10 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b8c9d0e1f2g3h"]
+[gd_scene load_steps=7 format=3]
 
 [ext_resource type="Script" path="res://scripts/ui/settings_screen.gd" id="1_4i5j6"]
 
 [sub_resource type="StyleBoxFlat" id="2_btn_normal"]
-bg_color = Color("#1a1a2e")
-border_color = Color("#4a9eff")
+bg_color = Color(0.102, 0.102, 0.180)
+border_color = Color(0.290, 0.620, 1.000)
 border_width_left = 2
 border_width_right = 2
 border_width_top = 2
@@ -15,8 +15,8 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="3_btn_hover"]
-bg_color = Color("#2a2a4e")
-border_color = Color("#8b5cf6")
+bg_color = Color(0.165, 0.165, 0.306)
+border_color = Color(0.545, 0.361, 0.965)
 border_width_left = 2
 border_width_right = 2
 border_width_top = 2
@@ -27,8 +27,8 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="4_btn_danger"]
-bg_color = Color("#2a1a1a")
-border_color = Color("#ef4444")
+bg_color = Color(0.165, 0.102, 0.102)
+border_color = Color(0.937, 0.267, 0.267)
 border_width_left = 2
 border_width_right = 2
 border_width_top = 2
@@ -39,8 +39,8 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="5_btn_danger_hover"]
-bg_color = Color("#3a2020")
-border_color = Color("#ff6666")
+bg_color = Color(0.227, 0.125, 0.125)
+border_color = Color(1.000, 0.400, 0.400)
 border_width_left = 2
 border_width_right = 2
 border_width_top = 2
@@ -51,8 +51,8 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="6_panel_bg"]
-bg_color = Color("#0f0f1a")
-border_color = Color("#4a9eff")
+bg_color = Color(0.059, 0.059, 0.102)
+border_color = Color(0.290, 0.620, 1.000)
 border_width_left = 2
 border_width_right = 2
 border_width_top = 2
@@ -70,16 +70,16 @@ script = ExtResource("1_4i5j6")
 [node name="Background" type="ColorRect" parent="."]
 anchors_preset = 0
 size = Vector2i(720, 1280)
-color = Color("#0f0f1a")
+color = Color(0.059, 0.059, 0.102)
 
 [node name="BackButton" type="Button" parent="."]
 unique_name_in_owner = true
 anchors_preset = 0
 position = Vector2i(20, 20)
 size = Vector2i(100, 40)
-theme_override_colors/font_color = Color("#ffffff")
-theme_override_colors/font_hover_color = Color("#ffffff")
-theme_override_colors/font_outline_color = Color("#4a9eff")
+theme_override_colors/font_color = Color(1.000, 1.000, 1.000)
+theme_override_colors/font_hover_color = Color(1.000, 1.000, 1.000)
+theme_override_colors/font_outline_color = Color(0.290, 0.620, 1.000)
 theme_override_constants/outline_size = 1
 theme_override_font_sizes/font_size = 16
 text = "← ATRÁS"
@@ -92,8 +92,8 @@ unique_name_in_owner = true
 anchors_preset = 0
 position = Vector2i(60, 60)
 size = Vector2i(600, 60)
-theme_override_colors/font_color = Color("#ffffff")
-theme_override_colors/font_outline_color = Color("#4a9eff")
+theme_override_colors/font_color = Color(1.000, 1.000, 1.000)
+theme_override_colors/font_outline_color = Color(0.290, 0.620, 1.000)
 theme_override_constants/outline_size = 3
 theme_override_font_sizes/font_size = 36
 horizontal_alignment = 1
@@ -111,7 +111,7 @@ theme_override_styles/panel = SubResource("6_panel_bg")
 anchors_preset = 0
 position = Vector2i(30, 30)
 size = Vector2i(200, 36)
-theme_override_colors/font_color = Color("#22d3ee")
+theme_override_colors/font_color = Color(0.133, 0.827, 0.933)
 theme_override_font_sizes/font_size = 20
 vertical_alignment = 1
 text = "SFX VOLUMEN"
@@ -130,7 +130,7 @@ value = 80.0
 anchors_preset = 0
 position = Vector2i(30, 90)
 size = Vector2i(200, 36)
-theme_override_colors/font_color = Color("#22d3ee")
+theme_override_colors/font_color = Color(0.133, 0.827, 0.933)
 theme_override_font_sizes/font_size = 20
 vertical_alignment = 1
 text = "MÚSICA VOLUMEN"
@@ -149,7 +149,7 @@ value = 60.0
 anchors_preset = 0
 position = Vector2i(30, 160)
 size = Vector2i(200, 36)
-theme_override_colors/font_color = Color("#22d3ee")
+theme_override_colors/font_color = Color(0.133, 0.827, 0.933)
 theme_override_font_sizes/font_size = 20
 vertical_alignment = 1
 text = "VIBRACIÓN"
@@ -166,9 +166,9 @@ unique_name_in_owner = true
 anchors_preset = 0
 position = Vector2i(100, 580)
 size = Vector2i(400, 56)
-theme_override_colors/font_color = Color("#ffffff")
-theme_override_colors/font_hover_color = Color("#ffffff")
-theme_override_colors/font_outline_color = Color("#ef4444")
+theme_override_colors/font_color = Color(1.000, 1.000, 1.000)
+theme_override_colors/font_hover_color = Color(1.000, 1.000, 1.000)
+theme_override_colors/font_outline_color = Color(0.937, 0.267, 0.267)
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 20
 text = "RESTABLECER PROGRESO"

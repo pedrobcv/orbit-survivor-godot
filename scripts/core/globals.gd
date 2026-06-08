@@ -1,5 +1,4 @@
 extends Node
-class_name GameConstants
 ## Global game constants for Orbit Survivor.
 ## This autoload provides centralized access to game-wide values.
 
