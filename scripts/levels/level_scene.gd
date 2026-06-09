@@ -5,16 +5,20 @@ class_name LevelScene
 ## Coordinates level loading, orbit system building, player control,
 ## HUD display, and handles game flow (victory / game over / pause).
 
-# References to major subsystems (resolved via @onready to avoid parse-time type issues with autoloads)
-@onready var _orbit_system: OrbitSystem = null
-@onready var _player: PlayerOrbiter = null
-@onready var _hud: GameHUD = null
-@onready var _camera: CameraController = null
+# Scene paths for UI that must be loaded from .tscn files
+const HUD_SCENE := preload("res://scenes/ui/game_hud.tscn")
+const GAME_OVER_SCENE := preload("res://scenes/ui/game_over_screen.tscn")
+const VICTORY_SCENE := preload("res://scenes/ui/victory_screen.tscn")
 
+# References to major subsystems
+var _orbit_system: OrbitSystem = null
+var _player: PlayerOrbiter = null
+var _hud = null
+var _camera: CameraController = null
 var _game_over_ui = null
 var _victory_ui = null
 
-# Autoload references (resolved at runtime)
+# Autoload references (resolved at runtime via @onready)
 @onready var _level_mgr = LevelManager
 @onready var _save_mgr = SaveManager
 @onready var _audio_mgr = AudioManager
@@ -39,7 +43,6 @@ func _ready() -> void:
 	if GameManager.has_method("get_current_level"):
 		_level_id = GameManager.get_current_level()
 	else:
-		# Fallback: try a global / autoload variable
 		_level_id = ProjectSettings.get_setting("application/current_level", "level_01")
 
 	# --- 2. Load level data ---
@@ -70,10 +73,16 @@ func _ready() -> void:
 	else:
 		push_error("LevelScene: No PlayerOrbiter created by OrbitSystem")
 
-	# --- 6. Create GameHUD ---
-	_hud = GameHUD.new()
-	add_child(_hud)
-	_hud.start_hud(_level_data.get("name", _level_id))
+	# --- 6. Create GameHUD from .tscn ---
+	if HUD_SCENE:
+		_hud = HUD_SCENE.instantiate()
+		add_child(_hud)
+		if _hud.has_method("start_hud"):
+			_hud.start_hud(_level_data.get("name", _level_id))
+		else:
+			push_error("LevelScene: HUD missing start_hud method")
+	else:
+		push_error("LevelScene: HUD_SCENE not found")
 
 	# --- 7. Connect SignalBus signals ---
 	SignalBus.player_hit.connect(_on_player_hit)
@@ -95,9 +104,6 @@ func _ready() -> void:
 	_pause_overlay.visible = false
 	_pause_overlay.anchors_preset = Control.PRESET_FULL_RECT
 	add_child(_pause_overlay)
-
-	# Connect input for pause toggling
-	# We handle pause via the HUD's pause button - keyboard escape handled in _unhandled_input
 
 
 func _process(delta: float) -> void:
@@ -124,7 +130,6 @@ func _toggle_pause() -> void:
 	if _paused:
 		_pause_overlay.visible = true
 		get_tree().paused = true
-		# Emit pause signal so HUD and other systems react
 		SignalBus.pause_toggled.emit(true)
 	else:
 		_pause_overlay.visible = false
@@ -141,7 +146,7 @@ func _on_player_hit(damage: int, source: Node) -> void:
 	_deaths += 1
 
 	# Stop game time
-	if _hud:
+	if _hud and _hud.has_method("stop_hud"):
 		_hud.stop_hud()
 
 	# Play hit sound
@@ -160,7 +165,7 @@ func _on_portal_reached(portal: Node) -> void:
 	_is_game_over = true
 
 	# Stop game time
-	if _hud:
+	if _hud and _hud.has_method("stop_hud"):
 		_hud.stop_hud()
 
 	# Play victory sound
@@ -210,41 +215,41 @@ func _on_pause_toggled(is_paused: bool) -> void:
 
 ## Handles level_selected signal (from victory screen "next level" or "retry")
 func _on_level_selected(level_id: String) -> void:
-	# Clean up current scene first
 	_clean_up()
-	# Reload this scene with the new level
 	_level_id = level_id
-	# Approach: change scene to game scene which will create a new LevelScene
 	var game_scene_path: String = Globals.GAME_SCENE
 	if ResourceLoader.exists(game_scene_path):
 		get_tree().change_scene_to_file(game_scene_path)
-
-		# We need to tell the next scene which level to load.
-		# Since GameManager is an autoload, we set a var on it.
 		if GameManager.has_method("set_current_level"):
 			GameManager.set_current_level(level_id)
 	else:
-		# Fallback: just reload this scene and set level via ProjectSettings
 		ProjectSettings.set_setting("application/current_level", level_id)
 		get_tree().reload_current_scene()
 
 
 ## Shows the Game Over screen
 func _show_game_over() -> void:
-	_game_over_ui = GameOverScreenUI.new()
-	add_child(_game_over_ui)
-	_game_over_ui.show_game_over(_level_id)
+	if GAME_OVER_SCENE:
+		_game_over_ui = GAME_OVER_SCENE.instantiate()
+		add_child(_game_over_ui)
+		if _game_over_ui.has_method("show_game_over"):
+			_game_over_ui.show_game_over(_level_id)
+	else:
+		push_error("LevelScene: GAME_OVER_SCENE not found")
 
-	# Play game over sound
 	if _audio_mgr:
 		_audio_mgr.play_sfx("game_over")
 
 
 ## Shows the Victory screen
 func _show_victory(stars: int) -> void:
-	_victory_ui = VictoryScreenUI.new()
-	add_child(_victory_ui)
-	_victory_ui.show_victory(_level_id, _elapsed_time, _deaths, _crystals_collected, _level_data.get("time_target", 30.0))
+	if VICTORY_SCENE:
+		_victory_ui = VICTORY_SCENE.instantiate()
+		add_child(_victory_ui)
+		if _victory_ui.has_method("show_victory"):
+			_victory_ui.show_victory(_level_id, _elapsed_time, _deaths, _crystals_collected, _level_data.get("time_target", 30.0))
+	else:
+		push_error("LevelScene: VICTORY_SCENE not found")
 
 
 ## Cleans up all children before transitioning
