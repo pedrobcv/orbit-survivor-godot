@@ -38,8 +38,6 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[nodes]
-
 [node name="GameHUD" type="CanvasLayer"]
 script = ExtResource("1_7k8l9")
 

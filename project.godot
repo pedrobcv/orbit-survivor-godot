@@ -25,7 +25,6 @@ LevelManager="*res://scripts/managers/level_manager.gd"
 SaveManager="*res://scripts/managers/save_manager.gd"
 AudioManager="*res://scripts/managers/audio_manager.gd"
 StarSystem="*res://scripts/managers/star_system.gd"
-EnergySystem="*res://scripts/core/energy_system.gd"
 DifficultyManager="*res://scripts/managers/difficulty_manager.gd"
 
 [rendering]
