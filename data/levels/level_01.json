@@ -1,7 +1,7 @@
 {
   "id": "level_01",
   "name": "Primer Orbital",
-  "description": "Toca la pantalla para cambiar de órbita. ¡Llega al portal!",
+  "description": "Recoge los 💎 cristales para abrir el portal. No te quedes sin ⚡ energía en órbitas lejanas.",
   "order": 1,
   "unlock_requirement": "none",
   "requires_key": false,
@@ -9,36 +9,15 @@
   "orbital_speed": 1.0,
   "obstacle_speed_mult": 1.0,
   "nodes": [
-    {
-      "id": "node_A",
-      "position": {"x": 200, "y": 640},
-      "orbits": [
-        {"radius": 80, "speed": 1.0, "direction": "clockwise"},
-        {"radius": 130, "speed": 0.8, "direction": "clockwise"}
-      ],
-      "start_node": true
-    },
-    {
-      "id": "node_B",
-      "position": {"x": 500, "y": 640},
-      "orbits": [
-        {"radius": 80, "speed": 1.2, "direction": "counterclockwise"}
-      ],
-      "start_node": false
-    }
+    {"id": "A", "position": {"x": 200, "y": 640}, "orbits": [{"radius": 80, "speed": 0.8, "direction": "clockwise"}, {"radius": 140, "speed": 0.6, "direction": "clockwise"}], "start_node": true},
+    {"id": "B", "position": {"x": 500, "y": 640}, "orbits": [{"radius": 80, "speed": 1.0, "direction": "counterclockwise"}], "start_node": false}
   ],
-  "obstacles": [
-    {"node_id": "node_A", "orbit_index": 1, "angle": 180, "size": 12, "moving": false}
-  ],
+  "obstacles": [{"node_id": "A", "orbit_index": 1, "angle": 180, "size": 12, "moving": false}],
   "crystals": [
-    {"id": "crystal_1", "node_id": "node_A", "orbit_index": 0, "angle": 90},
-    {"id": "crystal_2", "node_id": "node_B", "orbit_index": 0, "angle": 45}
+    {"id": "c1", "node_id": "A", "orbit_index": 0, "angle": 90},
+    {"id": "c2", "node_id": "B", "orbit_index": 0, "angle": 45}
   ],
-  "portal": {"node_id": "node_B", "orbit_index": 0, "angle": 270},
-  "key": null,
-  "enemies": [],
-  "magnetic_zones": [],
-  "lasers": [],
-  "mines": [],
+  "portal": {"node_id": "B", "orbit_index": 0, "angle": 270},
+  "key": null, "enemies": [], "magnetic_zones": [], "lasers": [], "mines": [],
   "star_requirements": {"one_star": 1, "two_stars": 2, "three_stars": 3}
 }

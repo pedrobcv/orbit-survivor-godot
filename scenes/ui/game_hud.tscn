@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=8 format=3]
 
 [ext_resource type="Script" path="res://scripts/ui/game_hud.gd" id="1_7k8l9"]
 
@@ -38,6 +38,8 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
+[nodes]
+
 [node name="GameHUD" type="CanvasLayer"]
 script = ExtResource("1_7k8l9")
 
@@ -46,48 +48,88 @@ unique_name_in_owner = true
 anchors_preset = 0
 size = Vector2i(720, 1280)
 
+[node name="EnergyContainer" type="Control" parent="HUDPanel"]
+unique_name_in_owner = true
+anchors_preset = 0
+position = Vector2i(16, 10)
+size = Vector2i(688, 20)
+modulate = Color(1, 1, 1, 0)
+
+[node name="EnergyBG" type="ColorRect" parent="HUDPanel/EnergyContainer"]
+unique_name_in_owner = true
+anchors_preset = 0
+size = Vector2i(688, 16)
+color = Color(0.1, 0.1, 0.15, 1.0)
+
+[node name="EnergyBar" type="ColorRect" parent="HUDPanel/EnergyContainer"]
+unique_name_in_owner = true
+anchors_preset = 0
+position = Vector2i(0, 0)
+size = Vector2i(688, 16)
+color = Color(0.2, 0.9, 0.3, 1.0)
+
+[node name="EnergyLabel" type="Label" parent="HUDPanel/EnergyContainer"]
+anchors_preset = 0
+position = Vector2i(0, 18)
+size = Vector2i(688, 14)
+theme_override_colors/font_color = Color(0.5, 0.5, 0.6, 1.0)
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 1
+text = "ENERGÍA"
+
 [node name="TimeLabel" type="Label" parent="HUDPanel"]
 unique_name_in_owner = true
 anchors_preset = 0
-position = Vector2i(16, 40)
-size = Vector2i(180, 36)
+position = Vector2i(16, 44)
+size = Vector2i(140, 28)
 theme_override_colors/font_color = Color(0.133, 0.827, 0.933, 1.0)
 theme_override_colors/font_outline_color = Color(0.059, 0.059, 0.102, 1.0)
 theme_override_constants/outline_size = 2
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 18
 text = "00:00:00"
 
 [node name="CrystalsLabel" type="Label" parent="HUDPanel"]
 unique_name_in_owner = true
 anchors_preset = 0
-position = Vector2i(540, 40)
-size = Vector2i(160, 36)
+position = Vector2i(540, 44)
+size = Vector2i(160, 28)
 theme_override_colors/font_color = Color(0.133, 0.827, 0.933, 1.0)
 theme_override_colors/font_outline_color = Color(0.059, 0.059, 0.102, 1.0)
 theme_override_constants/outline_size = 2
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 18
 horizontal_alignment = 2
 text = "💎 0"
 
 [node name="LevelLabel" type="Label" parent="HUDPanel"]
 unique_name_in_owner = true
 anchors_preset = 0
-position = Vector2i(260, 40)
-size = Vector2i(200, 36)
+position = Vector2i(180, 44)
+size = Vector2i(360, 28)
 theme_override_colors/font_color = Color(1.000, 1.000, 1.000, 1.0)
 theme_override_colors/font_outline_color = Color(0.290, 0.620, 1.000, 1.0)
 theme_override_constants/outline_size = 2
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 18
 horizontal_alignment = 1
 text = "NIVEL"
+
+[node name="AllCrystalsLabel" type="Label" parent="HUDPanel"]
+unique_name_in_owner = true
+anchors_preset = 0
+position = Vector2i(16, 74)
+size = Vector2i(140, 22)
+theme_override_colors/font_color = Color(0.9, 0.8, 0.2, 1.0)
+theme_override_colors/font_outline_color = Color(0.059, 0.059, 0.102, 1.0)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 14
+text = "💎 0/0"
 
 [node name="PauseButton" type="Button" parent="HUDPanel"]
 unique_name_in_owner = true
 anchors_preset = 0
-position = Vector2i(660, 36)
-size = Vector2i(48, 48)
+position = Vector2i(660, 40)
+size = Vector2i(48, 40)
 theme_override_colors/font_color = Color(1.000, 1.000, 1.000, 1.0)
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 18
 text = "⏸"
 theme_override_styles/normal = SubResource("2_btn_normal")
 theme_override_styles/hover = SubResource("3_btn_hover")

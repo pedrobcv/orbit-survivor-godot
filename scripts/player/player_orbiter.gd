@@ -81,6 +81,9 @@ func initialize(node_ref: OrbitNode, orbit_index: int, angle: float) -> void:
 	# Emit orbit changed signal
 	SignalBus.orbit_changed.emit(self, node_ref.get_orbit_radius(orbit_index), node_ref.get_orbit_speed(orbit_index) * speed_mult)
 	orbit_changed.emit(node_ref.node_id, orbit_index)
+	
+	# Update energy system based on orbit position
+	EnergySystem.set_orbit(orbit_index, node_ref.get_orbit_count())
 
 
 ## Called every frame. Moves player along the current orbit.
@@ -161,6 +164,9 @@ func _finish_transition() -> void:
 	# Emit signal
 	SignalBus.orbit_changed.emit(self, current_node.get_orbit_radius(current_orbit_index), current_node.get_orbit_speed(current_orbit_index) * speed_mult)
 	orbit_changed.emit(current_node.node_id, current_orbit_index)
+	
+	# Update energy
+	EnergySystem.set_orbit(current_orbit_index, current_node.get_orbit_count())
 
 
 ## Jumps to a different orbit on the same node (or a different node).
@@ -178,6 +184,7 @@ func jump_to_orbit(node_ref: OrbitNode, orbit_index: int, angle: float, smooth: 
 		_update_position()
 		SignalBus.orbit_changed.emit(self, node_ref.get_orbit_radius(orbit_index), node_ref.get_orbit_speed(orbit_index) * speed_mult)
 		orbit_changed.emit(node_ref.node_id, orbit_index)
+		EnergySystem.set_orbit(orbit_index, node_ref.get_orbit_count())
 
 
 ## Jumps to a different node at the specified orbit and entry angle.
@@ -194,6 +201,7 @@ func jump_to_node(new_node_ref: OrbitNode, orbit_index: int, entry_angle: float,
 		_update_position()
 		SignalBus.orbit_changed.emit(self, new_node_ref.get_orbit_radius(orbit_index), new_node_ref.get_orbit_speed(orbit_index) * speed_mult)
 		orbit_changed.emit(new_node_ref.node_id, orbit_index)
+		EnergySystem.set_orbit(orbit_index, new_node_ref.get_orbit_count())
 
 
 ## Starts a smooth transition to a target node/orbit/angle.

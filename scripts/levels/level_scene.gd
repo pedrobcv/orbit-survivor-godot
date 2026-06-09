@@ -1,56 +1,54 @@
 extends Node2D
 class_name LevelScene
 
-## Main gameplay scene for Orbit Survivor.
-## Simplified and robust version.
+## Main gameplay scene — Orbit Survivor 2.0
+## Energy management + crystal collection + portal unlocked when all collected
 
-# Preload UI scenes
 const HUD_SCENE := preload("res://scenes/ui/game_hud.tscn")
 const GAME_OVER_SCENE := preload("res://scenes/ui/game_over_screen.tscn")
 const VICTORY_SCENE := preload("res://scenes/ui/victory_screen.tscn")
 
-# Subsystems (set up in _ready)
 var _orbit_system: OrbitSystem = null
 var _player: PlayerOrbiter = null
 var _hud = null
 var _game_over_ui = null
 var _victory_ui = null
 var _pause_overlay: ColorRect = null
+var _crystals_total: int = 0
 
-# Autoloads
 @onready var _level_mgr = LevelManager
 @onready var _save_mgr = SaveManager
 @onready var _audio_mgr = AudioManager
 @onready var _star_sys = StarSystem
 
-# State
 var _level_id: String = "level_01"
 var _level_data: Dictionary = {}
 var _is_game_over: bool = false
-var _start_time: float = 0.0
+var _is_victory: bool = false
 var _elapsed_time: float = 0.0
 var _deaths: int = 0
 var _crystals_collected: int = 0
 var _paused: bool = false
 
 func _ready() -> void:
-	# Get level ID from GameManager
 	if GameManager.has_method("get_current_level"):
 		_level_id = GameManager.get_current_level()
 	
-	# Load level data
 	_load_current_level()
 	
-	# Create orbit system
+	# Crear sistema orbital
 	_orbit_system = OrbitSystem.new()
 	add_child(_orbit_system)
 	_orbit_system.build_from_level_data(_level_data)
 	
-	# Get player
 	if _orbit_system.player:
 		_player = _orbit_system.player
 	
-	# Create Camera
+	# Contar cristales totales
+	var crystals_data = _level_data.get("crystals", [])
+	_crystals_total = crystals_data.size()
+	
+	# Cámara
 	var camera = Camera2D.new()
 	camera.name = "Camera2D"
 	camera.zoom = Vector2(1.0, 1.0)
@@ -59,22 +57,29 @@ func _ready() -> void:
 	add_child(camera)
 	camera.make_current()
 	
-	# Create HUD
+	# HUD
 	_hud = HUD_SCENE.instantiate()
 	add_child(_hud)
 	if _hud.has_method("start_hud"):
-		_hud.start_hud(_level_data.get("name", _level_id))
+		_hud.start_hud(_level_data.get("name", _level_id), _crystals_total)
 	
-	# Connect signals
+	# Señales
 	SignalBus.player_hit.connect(_on_player_hit)
 	SignalBus.portal_reached.connect(_on_portal_reached)
 	SignalBus.crystal_collected.connect(_on_crystal_collected)
 	SignalBus.pause_toggled.connect(_on_pause_toggled)
 	
-	# Start timer
-	_start_time = Time.get_ticks_msec() / 1000.0
+	# EnergySystem
+	EnergySystem.reset()
+	EnergySystem.start()
+	if _player and _player.current_node:
+		EnergySystem.set_orbit(_player.current_orbit_index, _player.current_node.get_orbit_count())
 	
-	# Pause overlay (hidden)
+	# Conectar energía
+	if not EnergySystem.energy_depleted.is_connected(_on_energy_depleted):
+		EnergySystem.energy_depleted.connect(_on_energy_depleted)
+	
+	# Overlay de pausa
 	_pause_overlay = ColorRect.new()
 	_pause_overlay.color = Color(0, 0, 0, 0.5)
 	_pause_overlay.mouse_filter = Control.MOUSE_FILTER_STOP
@@ -82,33 +87,33 @@ func _ready() -> void:
 	_pause_overlay.anchors_preset = Control.PRESET_FULL_RECT
 	add_child(_pause_overlay)
 	
-	# Notify ready
 	SignalBus.game_ready.emit()
 
 func _load_current_level() -> void:
 	_level_mgr.load_level(_level_id)
 	_level_data = _level_mgr.get_current_level_data()
-	if _level_data.is_empty():
-		push_error("LevelScene: Failed to load ", _level_id)
 
 func _process(delta: float) -> void:
 	if _is_game_over or _paused:
 		return
+	
 	_elapsed_time += delta
 	
-	# Camera follows player
+	# Seguir jugador con cámara
 	if _player:
-		var camera = get_node_or_null(NodePath("Camera2D"))
-		if camera:
-			camera.global_position = _player.global_position
+		var cam = get_node_or_null(NodePath("Camera2D"))
+		if cam:
+			cam.global_position = _player.global_position
+	
+	# Actualizar HUD con energía
+	if _hud and _hud.has_method("update_energy"):
+		_hud.update_energy(EnergySystem.get_energy_percent())
 
 func _input(event: InputEvent) -> void:
-	# Handle ESC for pause
 	if event.is_action_pressed("ui_cancel"):
 		_toggle_pause()
 		get_viewport().set_input_as_handled()
 	
-	# Handle tap/click
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			_handle_tap()
@@ -133,7 +138,8 @@ func _toggle_pause() -> void:
 	get_tree().paused = _paused
 	SignalBus.pause_toggled.emit(_paused)
 
-func _on_player_hit(damage: int, source: Node) -> void:
+func _on_energy_depleted() -> void:
+	# Muerte por falta de energía
 	if _is_game_over:
 		return
 	_is_game_over = true
@@ -146,10 +152,34 @@ func _on_player_hit(damage: int, source: Node) -> void:
 	
 	_show_game_over()
 
+func _on_player_hit(damage: int, source: Node) -> void:
+	if _is_game_over:
+		return
+	
+	# Golpe de obstáculo: pierde energía
+	EnergySystem.add_energy(-25.0)
+	if _audio_mgr:
+		_audio_mgr.play_sfx("hit")
+	
+	# Si la energía se fue a 0, ya se disparó energy_depleted
+	# Pero podemos darle un pequeño empuje para que no sea instantáneo
+	if EnergySystem.get_energy() <= 0:
+		_on_energy_depleted()
+
 func _on_portal_reached(portal: Node) -> void:
 	if _is_game_over:
 		return
+	
+	# Verificar si tiene todos los cristales
+	if _crystals_collected < _crystals_total:
+		# Portal bloqueado — feedback visual/sonoro
+		if _audio_mgr:
+			_audio_mgr.play_sfx("hit")
+		return
+	
 	_is_game_over = true
+	_is_victory = true
+	EnergySystem.stop()
 	
 	if _hud and _hud.has_method("stop_hud"):
 		_hud.stop_hud()
@@ -172,9 +202,16 @@ func _on_portal_reached(portal: Node) -> void:
 	SignalBus.level_completed.emit(_level_id, stars, _crystals_collected)
 
 func _on_crystal_collected(crystal: Node, value: int) -> void:
+	if _is_game_over:
+		return
 	_crystals_collected += value
+	EnergySystem.add_energy(5.0)  # Recarga un poco al recoger cristal
 	if _audio_mgr:
 		_audio_mgr.play_sfx("crystal")
+	
+	# Actualizar HUD
+	if _hud and _hud.has_method("update_crystals"):
+		_hud.update_crystals(_crystals_collected, _crystals_total)
 
 func _on_pause_toggled(is_paused: bool) -> void:
 	_paused = is_paused
@@ -182,6 +219,7 @@ func _on_pause_toggled(is_paused: bool) -> void:
 	get_tree().paused = _paused
 
 func _show_game_over() -> void:
+	EnergySystem.stop()
 	if GAME_OVER_SCENE:
 		_game_over_ui = GAME_OVER_SCENE.instantiate()
 		add_child(_game_over_ui)
@@ -197,7 +235,6 @@ func _show_victory(stars: int) -> void:
 		if _victory_ui.has_method("show_victory"):
 			_victory_ui.show_victory(_level_id, _elapsed_time, _deaths, _crystals_collected, _level_data.get("time_target", 30.0))
 
-## Used by Camera2D in the scene
 func get_player() -> PlayerOrbiter:
 	return _player
 
@@ -205,6 +242,8 @@ func _exit_tree() -> void:
 	_clean_up()
 
 func _clean_up() -> void:
+	if EnergySystem.energy_depleted.is_connected(_on_energy_depleted):
+		EnergySystem.energy_depleted.disconnect(_on_energy_depleted)
 	if SignalBus.player_hit.is_connected(_on_player_hit):
 		SignalBus.player_hit.disconnect(_on_player_hit)
 	if SignalBus.portal_reached.is_connected(_on_portal_reached):
@@ -215,6 +254,7 @@ func _clean_up() -> void:
 		SignalBus.pause_toggled.disconnect(_on_pause_toggled)
 	if get_tree().paused:
 		get_tree().paused = false
+	EnergySystem.stop()
 	for child in get_children():
 		if is_instance_valid(child):
 			child.queue_free()
