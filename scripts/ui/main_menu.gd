@@ -41,8 +41,8 @@ func _setup_title_animation() -> void:
 func _animate_neon_pulse(scale_value: float) -> void:
 	title_label.scale = Vector2(scale_value, scale_value)
 	# Modulate between base color and brighter neon
-	var base_color := Color("#4a9eff")
-	var bright_color := Color("#22d3ee")
+	var base_color := Color(0.663, 0.937, 0.059, 1.0)
+	var bright_color := Color(0.176, 0.243, 0.055, 1.0)
 	var t := (scale_value - 0.8) / 0.2
 	title_label.modulate = base_color.lerp(bright_color, t)
 	if title_label.get("theme_override_colors/font_color") != null:

@@ -53,6 +53,10 @@ func _ready() -> void:
 	area_entered.connect(_on_area_entered)
 	
 	# Draw the player circle
+	queue_redraw()
+
+
+func _draw() -> void:
 	_draw_player()
 
 

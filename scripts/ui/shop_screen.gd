@@ -5,12 +5,12 @@ class_name ShopScreenUI
 ## Shows total crystals, a grid of colored circle skins with purchase/select states.
 
 const SKINS := [
-	{"id": "blue",   "name": "Azul",    "color": Color("#4a9eff"), "price": 0},
-	{"id": "purple", "name": "Morado",  "color": Color("#8b5cf6"), "price": 100},
-	{"id": "red",    "name": "Rojo",    "color": Color("#ef4444"), "price": 200},
-	{"id": "green",  "name": "Verde",   "color": Color("#22c55e"), "price": 300},
-	{"id": "gold",   "name": "Dorado",  "color": Color("#eab308"), "price": 500},
-	{"id": "rainbow","name": "Arcoíris","color": Color("#ec4899"), "price": 1000},
+	{"id": "blue",   "name": "Azul",    "color": Color(0.663, 0.937, 0.059, 1.0), "price": 0},
+	{"id": "purple", "name": "Morado",  "color": Color(0.710, 0.812, 0.024, 1.0), "price": 100},
+	{"id": "red",    "name": "Rojo",    "color": Color(0.957, 0.267, 0.016, 1.0), "price": 200},
+	{"id": "green",  "name": "Verde",   "color": Color(0.173, 0.333, 0.055, 1.0), "price": 300},
+	{"id": "gold",   "name": "Dorado",  "color": Color(0.671, 0.188, 0.031, 1.0), "price": 500},
+	{"id": "rainbow","name": "Arcoíris","color": Color(0.769, 0.537, 0.035, 1.0), "price": 1000},
 ]
 
 const SAVE_SECTION := "shop"

@@ -78,7 +78,7 @@ func _build_level_grid() -> void:
 		btn.disabled = is_locked
 		if is_locked:
 			btn.text = "Nivel %d\n🔒 Bloqueado" % order
-			btn.modulate = Color("#555555")
+			btn.modulate = Color(0.333, 0.333, 0.020, 1.0)
 		
 		btn.pressed.connect(_on_level_button_pressed.bind(level_id))
 		

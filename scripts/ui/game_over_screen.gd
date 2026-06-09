@@ -30,9 +30,9 @@ func show_game_over(level_id: String) -> void:
 	
 	# Red neon title
 	title_label.text = "GAME OVER"
-	title_label.add_theme_color_override("font_color", Color("#ef4444"))
-	title_label.add_theme_override("shadow_color", Color("#ef4444"))
-	title_label.add_theme_override("shadow_size", 8)
+	title_label.add_theme_color_override("font_color", Color(0.957, 0.267, 0.016, 1.0))
+	title_label.add_theme_color_override("font_outline_color", Color(0.957, 0.267, 0.016, 1.0))
+	title_label.add_theme_constant_override("outline_size", 8)
 	
 	_animate_fade_in()
 
