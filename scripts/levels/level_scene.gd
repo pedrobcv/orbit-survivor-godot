@@ -96,8 +96,8 @@ func _ready() -> void:
 	# --- 8. Record start time ---
 	_start_time = Time.get_ticks_msec() / 1000.0
 
-	# Emit game started
-	SignalBus.game_started.emit()
+	# Emit game ready (notify that scene is fully loaded)
+	SignalBus.game_ready.emit()
 
 	# --- 9. Create pause overlay (hidden) ---
 	_pause_overlay = ColorRect.new()
@@ -257,6 +257,10 @@ func _show_victory(stars: int) -> void:
 	else:
 		push_error("LevelScene: VICTORY_SCENE not found")
 
+
+## Returns the player reference (used by CameraController)
+func get_player() -> PlayerOrbiter:
+	return _player
 
 ## Cleans up all children before transitioning
 func _clean_up() -> void:
