@@ -1,34 +1,24 @@
 {
   "id": "level_05",
-  "name": "El Cruce",
-  "description": "Obstáculos en movimiento. ¡Sincronízate!",
+  "name": "El Enjambre",
+  "description": "6 enemigos en 4 nodos. Mata a todos.",
   "order": 5,
   "unlock_requirement": "level_04",
-  "requires_key": false,
   "time_target": 50.0,
   "orbital_speed": 1.2,
-  "obstacle_speed_mult": 1.3,
   "nodes": [
-    {"id": "n1", "position": {"x": 360, "y": 300}, "orbits": [{"radius": 80, "speed": 1.2, "direction": "clockwise"}, {"radius": 130, "speed": 0.9, "direction": "clockwise"}], "start_node": true},
-    {"id": "n2", "position": {"x": 150, "y": 650}, "orbits": [{"radius": 70, "speed": 1.0, "direction": "counterclockwise"}], "start_node": false},
-    {"id": "n3", "position": {"x": 570, "y": 650}, "orbits": [{"radius": 70, "speed": 1.1, "direction": "clockwise"}], "start_node": false},
-    {"id": "n4", "position": {"x": 360, "y": 900}, "orbits": [{"radius": 80, "speed": 1.3, "direction": "counterclockwise"}, {"radius": 130, "speed": 1.0, "direction": "counterclockwise"}], "start_node": false}
+    {"id": "A", "position": {"x": 360, "y": 300}, "orbits": [{"radius": 80, "speed": 1.1, "direction": "clockwise"}, {"radius": 130, "speed": 0.8, "direction": "clockwise"}], "start_node": true},
+    {"id": "B", "position": {"x": 150, "y": 650}, "orbits": [{"radius": 70, "speed": 0.9, "direction": "counterclockwise"}], "start_node": false},
+    {"id": "C", "position": {"x": 570, "y": 650}, "orbits": [{"radius": 70, "speed": 1.2, "direction": "clockwise"}], "start_node": false},
+    {"id": "D", "position": {"x": 360, "y": 900}, "orbits": [{"radius": 80, "speed": 0.8, "direction": "counterclockwise"}], "start_node": false}
   ],
-  "obstacles": [
-    {"node_id": "n1", "orbit_index": 0, "angle": 0, "size": 10, "moving": false},
-    {"node_id": "n1", "orbit_index": 1, "angle": 90, "size": 10, "moving": false},
-    {"node_id": "n2", "orbit_index": 0, "angle": 180, "size": 10, "moving": false},
-    {"node_id": "n3", "orbit_index": 0, "angle": 270, "size": 10, "moving": false},
-    {"node_id": "n4", "orbit_index": 0, "angle": 180, "size": 12, "moving": true, "move_speed": 1.0, "move_range": 0.3}
+  "enemies": [
+    {"node_id": "A", "orbit_index": 0, "angle": 10, "speed": 1.2},
+    {"node_id": "A", "orbit_index": 1, "angle": 200, "speed": 0.9},
+    {"node_id": "B", "orbit_index": 0, "angle": 45, "speed": 1.1},
+    {"node_id": "C", "orbit_index": 0, "angle": 135, "speed": 1.3},
+    {"node_id": "D", "orbit_index": 0, "angle": 90, "speed": 1.0},
+    {"node_id": "C", "orbit_index": 0, "angle": 315, "speed": 1.4}
   ],
-  "crystals": [
-    {"id": "c1", "node_id": "n1", "orbit_index": 0, "angle": 180},
-    {"id": "c2", "node_id": "n2", "orbit_index": 0, "angle": 90},
-    {"id": "c3", "node_id": "n3", "orbit_index": 0, "angle": 270},
-    {"id": "c4", "node_id": "n4", "orbit_index": 1, "angle": 0},
-    {"id": "c5", "node_id": "n4", "orbit_index": 0, "angle": 90}
-  ],
-  "portal": {"node_id": "n4", "orbit_index": 0, "angle": 270},
-  "key": null, "enemies": [], "magnetic_zones": [], "lasers": [], "mines": [],
-  "star_requirements": {"one_star": 1, "two_stars": 2, "three_stars": 3}
+  "portal": {"node_id": "D", "orbit_index": 0, "angle": 270}
 }

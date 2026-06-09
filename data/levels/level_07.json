@@ -1,34 +1,26 @@
 {
   "id": "level_07",
-  "name": "Obstáculos Danzantes",
-  "description": "Obstáculos móviles y más velocidad. ¡Concéntrate!",
+  "name": "La Muralia",
+  "description": "4 nodos con 2 órbitas, 8 enemigos. Sobrevive.",
   "order": 7,
   "unlock_requirement": "level_06",
-  "requires_key": false,
   "time_target": 55.0,
   "orbital_speed": 1.4,
-  "obstacle_speed_mult": 1.5,
   "nodes": [
-    {"id": "n1", "position": {"x": 360, "y": 300}, "orbits": [{"radius": 80, "speed": 1.3, "direction": "clockwise"}, {"radius": 130, "speed": 1.0, "direction": "clockwise"}], "start_node": true},
-    {"id": "n2", "position": {"x": 180, "y": 600}, "orbits": [{"radius": 70, "speed": 1.2, "direction": "counterclockwise"}, {"radius": 120, "speed": 0.9, "direction": "clockwise"}], "start_node": false},
-    {"id": "n3", "position": {"x": 540, "y": 600}, "orbits": [{"radius": 70, "speed": 1.4, "direction": "clockwise"}, {"radius": 120, "speed": 1.1, "direction": "counterclockwise"}], "start_node": false},
-    {"id": "n4", "position": {"x": 360, "y": 900}, "orbits": [{"radius": 80, "speed": 1.0, "direction": "counterclockwise"}], "start_node": false}
+    {"id": "A", "position": {"x": 360, "y": 300}, "orbits": [{"radius": 70, "speed": 1.2, "direction": "clockwise"}, {"radius": 120, "speed": 0.9, "direction": "clockwise"}], "start_node": true},
+    {"id": "B", "position": {"x": 180, "y": 650}, "orbits": [{"radius": 70, "speed": 1.1, "direction": "counterclockwise"}, {"radius": 120, "speed": 0.8, "direction": "clockwise"}], "start_node": false},
+    {"id": "C", "position": {"x": 540, "y": 650}, "orbits": [{"radius": 70, "speed": 1.3, "direction": "clockwise"}, {"radius": 120, "speed": 1.0, "direction": "counterclockwise"}], "start_node": false},
+    {"id": "D", "position": {"x": 360, "y": 920}, "orbits": [{"radius": 70, "speed": 1.0, "direction": "counterclockwise"}], "start_node": false}
   ],
-  "obstacles": [
-    {"node_id": "n1", "orbit_index": 0, "angle": 0, "size": 10, "moving": false},
-    {"node_id": "n1", "orbit_index": 1, "angle": 120, "size": 10, "moving": true, "move_speed": 2.0, "move_range": 0.3},
-    {"node_id": "n2", "orbit_index": 0, "angle": 90, "size": 10, "moving": true, "move_speed": 1.5, "move_range": 0.5},
-    {"node_id": "n3", "orbit_index": 0, "angle": 180, "size": 10, "moving": false},
-    {"node_id": "n3", "orbit_index": 1, "angle": 270, "size": 10, "moving": true, "move_speed": 2.0, "move_range": 0.4},
-    {"node_id": "n4", "orbit_index": 0, "angle": 0, "size": 12, "moving": true, "move_speed": 1.5, "move_range": 0.3}
+  "enemies": [
+    {"node_id": "A", "orbit_index": 0, "angle": 0, "speed": 1.3},
+    {"node_id": "A", "orbit_index": 1, "angle": 120, "speed": 1.0},
+    {"node_id": "B", "orbit_index": 0, "angle": 45, "speed": 1.2},
+    {"node_id": "B", "orbit_index": 1, "angle": 180, "speed": 0.9},
+    {"node_id": "C", "orbit_index": 0, "angle": 270, "speed": 1.4},
+    {"node_id": "C", "orbit_index": 1, "angle": 90, "speed": 0.8},
+    {"node_id": "D", "orbit_index": 0, "angle": 0, "speed": 1.1},
+    {"node_id": "D", "orbit_index": 0, "angle": 180, "speed": 1.0}
   ],
-  "crystals": [
-    {"id": "c1", "node_id": "n1", "orbit_index": 1, "angle": 240},
-    {"id": "c2", "node_id": "n2", "orbit_index": 1, "angle": 180},
-    {"id": "c3", "node_id": "n3", "orbit_index": 0, "angle": 0},
-    {"id": "c4", "node_id": "n4", "orbit_index": 0, "angle": 270}
-  ],
-  "portal": {"node_id": "n4", "orbit_index": 0, "angle": 180},
-  "key": null, "enemies": [], "magnetic_zones": [], "lasers": [], "mines": [],
-  "star_requirements": {"one_star": 1, "two_stars": 2, "three_stars": 3}
+  "portal": {"node_id": "D", "orbit_index": 0, "angle": 270}
 }

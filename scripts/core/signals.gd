@@ -11,7 +11,11 @@ signal pause_toggled(is_paused: bool)
 
 # Player events
 signal player_hit(damage: int, source: Node)
+signal player_died()  # No more lives
 signal orbit_changed(target: Node, radius: float, speed: float)
+
+# Combat
+signal enemy_killed(enemy: Node)
 
 # Collectibles & objectives
 signal crystal_collected(crystal: Node, value: int)
