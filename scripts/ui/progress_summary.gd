@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 class_name ProgressSummaryUI
 
 ## Global progress summary showing total stars, total crystals, and level completion.

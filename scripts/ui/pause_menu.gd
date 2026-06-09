@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 class_name PauseMenuUI
 
 ## Pause menu overlay shown when the player pauses the game.

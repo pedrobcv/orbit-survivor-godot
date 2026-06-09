@@ -1,61 +1,42 @@
 {
   "id": "level_08",
-  "name": "Campo Magnético",
-  "description": "Las zonas magnéticas alteran tu trayectoria",
+  "name": "Laberinto Orbital",
+  "description": "Muchos nodos, una salida. ¡No te pierdas!",
   "order": 8,
   "unlock_requirement": "level_07",
   "requires_key": false,
-  "time_target": 55.0,
+  "time_target": 60.0,
   "orbital_speed": 1.5,
-  "obstacle_speed_mult": 1.2,
+  "obstacle_speed_mult": 1.6,
   "nodes": [
-    {
-      "id": "node_1",
-      "position": {"x": 200, "y": 560},
-      "orbits": [
-        {"radius": 75, "speed": 1.0, "direction": "clockwise"}
-      ],
-      "start_node": true
-    },
-    {
-      "id": "node_2",
-      "position": {"x": 360, "y": 700},
-      "orbits": [
-        {"radius": 80, "speed": 1.1, "direction": "counterclockwise"}
-      ],
-      "start_node": false
-    },
-    {
-      "id": "node_3",
-      "position": {"x": 520, "y": 560},
-      "orbits": [
-        {"radius": 90, "speed": 1.0, "direction": "clockwise"}
-      ],
-      "start_node": false
-    }
+    {"id": "n1", "position": {"x": 360, "y": 200}, "orbits": [{"radius": 70, "speed": 1.3, "direction": "clockwise"}], "start_node": true},
+    {"id": "n2", "position": {"x": 130, "y": 400}, "orbits": [{"radius": 60, "speed": 1.2, "direction": "counterclockwise"}], "start_node": false},
+    {"id": "n3", "position": {"x": 590, "y": 400}, "orbits": [{"radius": 60, "speed": 1.4, "direction": "clockwise"}], "start_node": false},
+    {"id": "n4", "position": {"x": 360, "y": 550}, "orbits": [{"radius": 70, "speed": 1.0, "direction": "clockwise"}, {"radius": 120, "speed": 0.8, "direction": "counterclockwise"}], "start_node": false},
+    {"id": "n5", "position": {"x": 130, "y": 750}, "orbits": [{"radius": 60, "speed": 1.1, "direction": "counterclockwise"}], "start_node": false},
+    {"id": "n6", "position": {"x": 590, "y": 750}, "orbits": [{"radius": 60, "speed": 1.5, "direction": "clockwise"}], "start_node": false},
+    {"id": "n7", "position": {"x": 360, "y": 950}, "orbits": [{"radius": 70, "speed": 1.3, "direction": "counterclockwise"}, {"radius": 120, "speed": 1.0, "direction": "clockwise"}], "start_node": false}
   ],
   "obstacles": [
-    {"id": "obs_01", "node_id": "node_1", "orbit_index": 0, "angle": 60, "size": 18, "type": "static"},
-    {"id": "obs_02", "node_id": "node_1", "orbit_index": 0, "angle": 240, "size": 18, "type": "static"},
-    {"id": "obs_03", "node_id": "node_2", "orbit_index": 0, "angle": 0, "size": 20, "type": "static"},
-    {"id": "obs_04", "node_id": "node_2", "orbit_index": 0, "angle": 180, "size": 20, "type": "static"},
-    {"id": "obs_05", "node_id": "node_3", "orbit_index": 0, "angle": 45, "size": 18, "type": "static"},
-    {"id": "obs_06", "node_id": "node_3", "orbit_index": 0, "angle": 225, "size": 18, "type": "static"}
+    {"node_id": "n1", "orbit_index": 0, "angle": 0, "size": 10, "moving": false},
+    {"node_id": "n2", "orbit_index": 0, "angle": 90, "size": 10, "moving": false},
+    {"node_id": "n3", "orbit_index": 0, "angle": 180, "size": 10, "moving": false},
+    {"node_id": "n4", "orbit_index": 0, "angle": 45, "size": 10, "moving": true, "move_speed": 2.0, "move_range": 0.5},
+    {"node_id": "n4", "orbit_index": 1, "angle": 270, "size": 10, "moving": false},
+    {"node_id": "n5", "orbit_index": 0, "angle": 180, "size": 10, "moving": false},
+    {"node_id": "n6", "orbit_index": 0, "angle": 0, "size": 10, "moving": false},
+    {"node_id": "n7", "orbit_index": 0, "angle": 90, "size": 12, "moving": true, "move_speed": 2.0, "move_range": 0.3},
+    {"node_id": "n7", "orbit_index": 1, "angle": 180, "size": 10, "moving": false}
   ],
   "crystals": [
-    {"id": "crystal_1", "node_id": "node_1", "orbit_index": 0, "angle": 90},
-    {"id": "crystal_2", "node_id": "node_2", "orbit_index": 0, "angle": 270},
-    {"id": "crystal_3", "node_id": "node_3", "orbit_index": 0, "angle": 0},
-    {"id": "crystal_4", "node_id": "node_3", "orbit_index": 0, "angle": 180}
+    {"id": "c1", "node_id": "n2", "orbit_index": 0, "angle": 0},
+    {"id": "c2", "node_id": "n3", "orbit_index": 0, "angle": 90},
+    {"id": "c3", "node_id": "n4", "orbit_index": 0, "angle": 180},
+    {"id": "c4", "node_id": "n5", "orbit_index": 0, "angle": 270},
+    {"id": "c5", "node_id": "n6", "orbit_index": 0, "angle": 45},
+    {"id": "c6", "node_id": "n7", "orbit_index": 1, "angle": 0}
   ],
-  "portal": {"node_id": "node_3", "orbit_index": 0, "angle": 90},
-  "key": null,
-  "enemies": [],
-  "magnetic_zones": [
-    {"id": "mag_01", "node_id": "node_1", "position": {"x": 220, "y": 520}, "radius": 60, "strength": 1.5, "polarity": "attract", "color": "#4488FF"},
-    {"id": "mag_02", "node_id": "node_3", "position": {"x": 500, "y": 500}, "radius": 50, "strength": 1.2, "polarity": "repel", "color": "#FF8844"}
-  ],
-  "lasers": [],
-  "mines": [],
-  "star_requirements": {"one_star": 3, "two_stars": 6, "three_stars": 10}
+  "portal": {"node_id": "n7", "orbit_index": 0, "angle": 270},
+  "key": null, "enemies": [], "magnetic_zones": [], "lasers": [], "mines": [],
+  "star_requirements": {"one_star": 1, "two_stars": 2, "three_stars": 3}
 }

@@ -1,7 +1,7 @@
 {
   "id": "level_01",
   "name": "Primer Orbital",
-  "description": "Aprende a girar",
+  "description": "Toca la pantalla para cambiar de órbita. ¡Llega al portal!",
   "order": 1,
   "unlock_requirement": "none",
   "requires_key": false,
@@ -10,19 +10,31 @@
   "obstacle_speed_mult": 1.0,
   "nodes": [
     {
-      "id": "node_1",
-      "position": {"x": 360, "y": 640},
+      "id": "node_A",
+      "position": {"x": 200, "y": 640},
       "orbits": [
-        {"radius": 100, "speed": 1.0, "direction": "clockwise"}
+        {"radius": 80, "speed": 1.0, "direction": "clockwise"},
+        {"radius": 130, "speed": 0.8, "direction": "clockwise"}
       ],
       "start_node": true
+    },
+    {
+      "id": "node_B",
+      "position": {"x": 500, "y": 640},
+      "orbits": [
+        {"radius": 80, "speed": 1.2, "direction": "counterclockwise"}
+      ],
+      "start_node": false
     }
   ],
-  "obstacles": [],
-  "crystals": [
-    {"id": "crystal_1", "node_id": "node_1", "orbit_index": 0, "angle": 90}
+  "obstacles": [
+    {"node_id": "node_A", "orbit_index": 1, "angle": 180, "size": 12, "moving": false}
   ],
-  "portal": {"node_id": "node_1", "orbit_index": 0, "angle": 270},
+  "crystals": [
+    {"id": "crystal_1", "node_id": "node_A", "orbit_index": 0, "angle": 90},
+    {"id": "crystal_2", "node_id": "node_B", "orbit_index": 0, "angle": 45}
+  ],
+  "portal": {"node_id": "node_B", "orbit_index": 0, "angle": 270},
   "key": null,
   "enemies": [],
   "magnetic_zones": [],

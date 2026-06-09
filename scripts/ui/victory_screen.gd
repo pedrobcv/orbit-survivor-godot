@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 class_name VictoryScreenUI
 
 ## Victory screen displayed when a level is completed.

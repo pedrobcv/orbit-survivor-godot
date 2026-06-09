@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 class_name GameOverScreenUI
 
 ## Game over screen displayed when the player dies.
