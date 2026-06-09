@@ -5,13 +5,20 @@ class_name LevelScene
 ## Coordinates level loading, orbit system building, player control,
 ## HUD display, and handles game flow (victory / game over / pause).
 
-# References to major subsystems
-var _orbit_system: OrbitSystem = null
-var _player: PlayerOrbiter = null
-var _hud: GameHUD = null
-var _game_over_ui: GameOverScreenUI = null
-var _victory_ui: VictoryScreenUI = null
-var _camera: CameraController = null
+# References to major subsystems (resolved via @onready to avoid parse-time type issues with autoloads)
+@onready var _orbit_system: OrbitSystem = null
+@onready var _player: PlayerOrbiter = null
+@onready var _hud: GameHUD = null
+@onready var _camera: CameraController = null
+
+var _game_over_ui = null
+var _victory_ui = null
+
+# Autoload references (resolved at runtime)
+@onready var _level_mgr = LevelManager
+@onready var _save_mgr = SaveManager
+@onready var _audio_mgr = AudioManager
+@onready var _star_sys = StarSystem
 
 # State
 var _level_id: String = ""
@@ -36,10 +43,9 @@ func _ready() -> void:
 		_level_id = ProjectSettings.get_setting("application/current_level", "level_01")
 
 	# --- 2. Load level data ---
-	var level_mgr: LevelManager = LevelManager  # autoload singleton reference
-	if level_mgr:
-		level_mgr.load_level(_level_id)
-		_level_data = level_mgr.get_current_level_data()
+	if _level_mgr:
+		_level_mgr.load_level(_level_id)
+		_level_data = _level_mgr.get_current_level_data()
 		if _level_data.is_empty():
 			push_error("LevelScene: Failed to load level data for ", _level_id)
 			return
@@ -139,7 +145,8 @@ func _on_player_hit(damage: int, source: Node) -> void:
 		_hud.stop_hud()
 
 	# Play hit sound
-	AudioManager.play_sfx("hit")
+	if _audio_mgr:
+		_audio_mgr.play_sfx("hit")
 
 	# Show Game Over screen
 	_show_game_over()
@@ -157,23 +164,22 @@ func _on_portal_reached(portal: Node) -> void:
 		_hud.stop_hud()
 
 	# Play victory sound
-	AudioManager.play_sfx("victory")
+	if _audio_mgr:
+		_audio_mgr.play_sfx("victory")
 
 	# Calculate stars
 	var time_target: float = _level_data.get("time_target", 30.0)
-	var star_system: StarSystem = StarSystem  # autoload
 	var stars: int = 1
-	if star_system:
-		stars = star_system.calculate_stars(_level_id, _elapsed_time, _deaths, time_target)
+	if _star_sys:
+		stars = _star_sys.calculate_stars(_level_id, _elapsed_time, _deaths, time_target)
 
 	# Save progress via SaveManager
-	var save_mgr: SaveManager = SaveManager  # autoload
-	if save_mgr:
-		var current_stars := save_mgr.get_level_stars(_level_id)
+	if _save_mgr:
+		var current_stars := _save_mgr.get_level_stars(_level_id)
 		if stars > current_stars:
-			save_mgr.set_level_stars(_level_id, stars)
-		save_mgr.add_crystals(_crystals_collected)
-		save_mgr.save_game()
+			_save_mgr.set_level_stars(_level_id, stars)
+		_save_mgr.add_crystals(_crystals_collected)
+		_save_mgr.save_game()
 
 	# Show Victory screen
 	_show_victory(stars)
@@ -185,7 +191,8 @@ func _on_portal_reached(portal: Node) -> void:
 ## Called when a crystal is collected
 func _on_crystal_collected(crystal: Node, value: int) -> void:
 	_crystals_collected += value
-	AudioManager.play_sfx("crystal")
+	if _audio_mgr:
+		_audio_mgr.play_sfx("crystal")
 
 
 ## Handles pause toggled from HUD's pause button
@@ -229,7 +236,8 @@ func _show_game_over() -> void:
 	_game_over_ui.show_game_over(_level_id)
 
 	# Play game over sound
-	AudioManager.play_sfx("game_over")
+	if _audio_mgr:
+		_audio_mgr.play_sfx("game_over")
 
 
 ## Shows the Victory screen

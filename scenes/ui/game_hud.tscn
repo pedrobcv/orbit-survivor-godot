@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scripts/ui/game_hud.gd" id="1_7k8l9"]
 
 [sub_resource type="StyleBoxFlat" id="2_btn_normal"]
-bg_color = Color(0.102, 0.102, 0.180)
-border_color = Color(0.290, 0.620, 1.000)
+bg_color = Color(0.102, 0.102, 0.180, 1.0)
+border_color = Color(0.290, 0.620, 1.000, 1.0)
 border_width_left = 2
 border_width_right = 2
 border_width_top = 2
@@ -15,8 +15,8 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="3_btn_hover"]
-bg_color = Color(0.165, 0.165, 0.306)
-border_color = Color(0.545, 0.361, 0.965)
+bg_color = Color(0.165, 0.165, 0.306, 1.0)
+border_color = Color(0.545, 0.361, 0.965, 1.0)
 border_width_left = 2
 border_width_right = 2
 border_width_top = 2
@@ -27,8 +27,8 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="4_btn_disabled"]
-bg_color = Color(0.067, 0.067, 0.133)
-border_color = Color(0.200, 0.200, 0.333)
+bg_color = Color(0.067, 0.067, 0.133, 1.0)
+border_color = Color(0.200, 0.200, 0.333, 1.0)
 border_width_left = 2
 border_width_right = 2
 border_width_top = 2
@@ -51,8 +51,8 @@ unique_name_in_owner = true
 anchors_preset = 0
 position = Vector2i(16, 40)
 size = Vector2i(180, 36)
-theme_override_colors/font_color = Color(0.133, 0.827, 0.933)
-theme_override_colors/font_outline_color = Color(0.059, 0.059, 0.102)
+theme_override_colors/font_color = Color(0.133, 0.827, 0.933, 1.0)
+theme_override_colors/font_outline_color = Color(0.059, 0.059, 0.102, 1.0)
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 20
 text = "00:00:00"
@@ -62,8 +62,8 @@ unique_name_in_owner = true
 anchors_preset = 0
 position = Vector2i(540, 40)
 size = Vector2i(160, 36)
-theme_override_colors/font_color = Color(0.133, 0.827, 0.933)
-theme_override_colors/font_outline_color = Color(0.059, 0.059, 0.102)
+theme_override_colors/font_color = Color(0.133, 0.827, 0.933, 1.0)
+theme_override_colors/font_outline_color = Color(0.059, 0.059, 0.102, 1.0)
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 20
 horizontal_alignment = 2
@@ -74,8 +74,8 @@ unique_name_in_owner = true
 anchors_preset = 0
 position = Vector2i(260, 40)
 size = Vector2i(200, 36)
-theme_override_colors/font_color = Color(1.000, 1.000, 1.000)
-theme_override_colors/font_outline_color = Color(0.290, 0.620, 1.000)
+theme_override_colors/font_color = Color(1.000, 1.000, 1.000, 1.0)
+theme_override_colors/font_outline_color = Color(0.290, 0.620, 1.000, 1.0)
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 20
 horizontal_alignment = 1
@@ -86,7 +86,7 @@ unique_name_in_owner = true
 anchors_preset = 0
 position = Vector2i(660, 36)
 size = Vector2i(48, 48)
-theme_override_colors/font_color = Color(1.000, 1.000, 1.000)
+theme_override_colors/font_color = Color(1.000, 1.000, 1.000, 1.0)
 theme_override_font_sizes/font_size = 22
 text = "⏸"
 theme_override_styles/normal = SubResource("2_btn_normal")

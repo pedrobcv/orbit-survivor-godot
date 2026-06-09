@@ -14,6 +14,11 @@ class_name VictoryScreenUI
 @onready var victory_panel: Panel = %VictoryPanel
 @onready var overlay: ColorRect = %Overlay
 
+# Autoload references
+@onready var _save_mgr = SaveManager
+@onready var _star_sys = StarSystem
+@onready var _level_mgr = LevelManager
+
 var _level_id: String = ""
 var _earned_stars: int = 0
 var _total_score: int = 0
@@ -36,7 +41,8 @@ func show_victory(level_id: String, completion_time: float, deaths: int, crystal
 	_level_id = level_id
 	
 	# Calculate stars
-	_earned_stars = StarSystem.calculate_stars(level_id, completion_time, deaths, time_target)
+	if _star_sys:
+		_earned_stars = _star_sys.calculate_stars(level_id, completion_time, deaths, time_target)
 	_total_score = crystals * Globals.CRYSTAL_SCORE_VALUE
 	
 	# Update display
@@ -48,11 +54,12 @@ func show_victory(level_id: String, completion_time: float, deaths: int, crystal
 	time_label.text = "⏱ %02d:%02d" % [minutes, seconds]
 	
 	# Save progress
-	var current_stars := SaveManager.get_level_stars(level_id)
-	if _earned_stars > current_stars:
-		SaveManager.set_level_stars(level_id, _earned_stars)
-	SaveManager.add_crystals(crystals)
-	SaveManager.save_game()
+	if _save_mgr:
+		var current_stars := _save_mgr.get_level_stars(level_id)
+		if _earned_stars > current_stars:
+			_save_mgr.set_level_stars(level_id, _earned_stars)
+		_save_mgr.add_crystals(crystals)
+		_save_mgr.save_game()
 	
 	# Check if next level exists
 	var has_next := _check_next_level()
@@ -63,10 +70,12 @@ func show_victory(level_id: String, completion_time: float, deaths: int, crystal
 
 
 func _check_next_level() -> bool:
-	var level_data := LevelManager.get_current_level_data()
-	if level_data.is_empty():
-		return false
-	return level_data.has("next_level_id") and level_data["next_level_id"] != null
+	if _level_mgr:
+		var level_data := _level_mgr.get_current_level_data()
+		if level_data.is_empty():
+			return false
+		return level_data.has("next_level_id") and level_data["next_level_id"] != null
+	return false
 
 
 func _animate_in() -> void:
@@ -92,9 +101,9 @@ func _animate_stars_appearing() -> void:
 	for i in range(_earned_stars):
 		if i >= stars_container.get_child_count():
 			break
-		var star := stars_container.get_child(i) as TextureRect
+		var star = stars_container.get_child(i) as TextureRect
 		if star == null:
-			star := stars_container.get_child(i) as Label
+			star = stars_container.get_child(i) as Label
 		if star == null:
 			continue
 		
@@ -109,11 +118,12 @@ func _animate_stars_appearing() -> void:
 
 
 func _on_next_level_pressed() -> void:
-	var level_data := LevelManager.get_current_level_data()
-	if level_data.has("next_level_id"):
-		SignalBus.level_selected.emit(level_data["next_level_id"])
-	else:
-		SignalBus.scene_changed.emit("victory", "level_select")
+	if _level_mgr:
+		var level_data := _level_mgr.get_current_level_data()
+		if level_data.has("next_level_id"):
+			SignalBus.level_selected.emit(level_data["next_level_id"])
+			return
+	SignalBus.scene_changed.emit("victory", "level_select")
 
 
 func _on_retry_pressed() -> void:

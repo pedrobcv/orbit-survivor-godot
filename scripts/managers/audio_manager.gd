@@ -1,5 +1,4 @@
 extends Node
-class_name AudioManager
 ## AudioManager
 
 ## Manages sound effects and music playback using AudioStreamPlayer2D.

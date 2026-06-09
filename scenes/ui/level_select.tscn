@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scripts/ui/level_select.gd" id="1_2j3k4"]
 
 [sub_resource type="StyleBoxFlat" id="2_btn_normal"]
-bg_color = Color(0.102, 0.102, 0.180)
-border_color = Color(0.290, 0.620, 1.000)
+bg_color = Color(0.102, 0.102, 0.180, 1.0)
+border_color = Color(0.290, 0.620, 1.000, 1.0)
 border_width_left = 2
 border_width_right = 2
 border_width_top = 2
@@ -15,8 +15,8 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="3_btn_hover"]
-bg_color = Color(0.165, 0.165, 0.306)
-border_color = Color(0.545, 0.361, 0.965)
+bg_color = Color(0.165, 0.165, 0.306, 1.0)
+border_color = Color(0.545, 0.361, 0.965, 1.0)
 border_width_left = 2
 border_width_right = 2
 border_width_top = 2
@@ -27,8 +27,8 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="4_btn_disabled"]
-bg_color = Color(0.067, 0.067, 0.133)
-border_color = Color(0.200, 0.200, 0.333)
+bg_color = Color(0.067, 0.067, 0.133, 1.0)
+border_color = Color(0.200, 0.200, 0.333, 1.0)
 border_width_left = 2
 border_width_right = 2
 border_width_top = 2
@@ -46,16 +46,16 @@ script = ExtResource("1_2j3k4")
 [node name="Background" type="ColorRect" parent="."]
 anchors_preset = 0
 size = Vector2i(720, 1280)
-color = Color(0.059, 0.059, 0.102)
+color = Color(0.059, 0.059, 0.102, 1.0)
 
 [node name="BackButton" type="Button" parent="."]
 unique_name_in_owner = true
 anchors_preset = 0
 position = Vector2i(20, 20)
 size = Vector2i(100, 40)
-theme_override_colors/font_color = Color(1.000, 1.000, 1.000)
-theme_override_colors/font_hover_color = Color(1.000, 1.000, 1.000)
-theme_override_colors/font_outline_color = Color(0.290, 0.620, 1.000)
+theme_override_colors/font_color = Color(1.000, 1.000, 1.000, 1.0)
+theme_override_colors/font_hover_color = Color(1.000, 1.000, 1.000, 1.0)
+theme_override_colors/font_outline_color = Color(0.290, 0.620, 1.000, 1.0)
 theme_override_constants/outline_size = 1
 theme_override_font_sizes/font_size = 16
 text = "← ATRÁS"
@@ -68,8 +68,8 @@ unique_name_in_owner = true
 anchors_preset = 0
 position = Vector2i(60, 60)
 size = Vector2i(600, 60)
-theme_override_colors/font_color = Color(1.000, 1.000, 1.000)
-theme_override_colors/font_outline_color = Color(0.290, 0.620, 1.000)
+theme_override_colors/font_color = Color(1.000, 1.000, 1.000, 1.0)
+theme_override_colors/font_outline_color = Color(0.290, 0.620, 1.000, 1.0)
 theme_override_constants/outline_size = 3
 theme_override_font_sizes/font_size = 36
 horizontal_alignment = 1
@@ -81,7 +81,7 @@ unique_name_in_owner = true
 anchors_preset = 0
 position = Vector2i(60, 130)
 size = Vector2i(600, 40)
-theme_override_colors/font_color = Color(0.918, 0.702, 0.031)
+theme_override_colors/font_color = Color(0.918, 0.702, 0.031, 1.0)
 theme_override_font_sizes/font_size = 20
 horizontal_alignment = 1
 vertical_alignment = 1
