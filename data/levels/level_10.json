@@ -78,5 +78,5 @@
     {"id": "mine_01", "node_id": "node_1", "orbit_index": 0, "angle": 270, "radius": 12, "trigger_radius": 28, "damage": 2, "respawn_delay": 4.0},
     {"id": "mine_02", "node_id": "node_4", "orbit_index": 0, "angle": 315, "radius": 12, "trigger_radius": 28, "damage": 2, "respawn_delay": 4.0}
   ],
-  "stars_threshold": {"one_star": 0, "two_stars": 0, "three_stars": 0}
+  "star_requirements": {"one_star": 4, "two_stars": 8, "three_stars": 12}
 }

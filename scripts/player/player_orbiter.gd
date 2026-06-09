@@ -112,14 +112,14 @@ func _update_position() -> void:
 func _handle_transition(delta: float) -> void:
 	_transition_t += delta
 	
-	if _transition_t >= (_target_is_node_jump() if _target_node != current_node else JUMP_TIME if _target_node != current_node else TWEEN_TIME):
+	# Determine transition duration based on whether this is a node jump or orbit switch
+	var transition_time = JUMP_TIME if _target_node != current_node else TWEEN_TIME
+	if _transition_t >= transition_time:
 		# Transition complete
 		_finish_transition()
 		return
 	
-	var duration = TWEEN_TIME
-	if _target_node != current_node:
-		duration = JUMP_TIME
+	var duration = transition_time
 	
 	var t = clamp(_transition_t / duration, 0.0, 1.0)
 	# Ease in-out cubic for smooth motion

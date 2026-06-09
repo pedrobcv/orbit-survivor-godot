@@ -56,9 +56,11 @@ func _ready() -> void:
 		push_error("LevelScene: LevelManager not available")
 		return
 
-	# --- 3. Create Camera ---
-	_camera = CameraController.new()
-	add_child(_camera)
+	# --- 3. Get Camera (pre-placed in scene or create one) ---
+	_camera = get_node_or_null(NodePath("CameraController")) as CameraController
+	if not _camera:
+		_camera = CameraController.new()
+		add_child(_camera)
 	_camera.make_current()
 
 	# --- 4. Create OrbitSystem and build from level data ---
@@ -119,6 +121,10 @@ func _process(delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		_toggle_pause()
+	elif event is InputEventScreenTouch and event.pressed and not event.is_canceled():
+		# Forward tap to player
+		if _player and _player.has_method("handle_tap") and not _is_game_over and not _paused:
+			_player.handle_tap()
 
 
 ## Handles pause toggle

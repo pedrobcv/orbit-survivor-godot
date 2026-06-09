@@ -4,7 +4,7 @@
 [application]
 config/name="Orbit Survivor"
 config/version="0.1.0"
-config/features=PackedStringArray("4.0")
+config/features=PackedStringArray("4.5")
 run/main_scene="res://scenes/ui/main_menu.tscn"
 
 [display]
@@ -30,6 +30,13 @@ DifficultyManager="*res://scripts/managers/difficulty_manager.gd"
 [rendering]
 quality/intended_usage/framebuffer_allocation=1
 textures/vram_compression/import_etc2=true
+
+[input]
+ui_cancel={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194305,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
+}
 
 [debug]
 gdscript/warnings/inference_on_variant=0

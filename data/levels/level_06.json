@@ -45,5 +45,5 @@
     {"id": "laser_02", "node_id": "node_2", "angle": 225, "length": 70, "width": 6, "phase": 1.5, "duration": 1.5, "interval": 3.0, "color": "#44FF44"}
   ],
   "mines": [],
-  "stars_threshold": {"one_star": 0, "two_stars": 0, "three_stars": 0}
+  "star_requirements": {"one_star": 3, "two_stars": 5, "three_stars": 8}
 }

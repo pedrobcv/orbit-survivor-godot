@@ -34,5 +34,5 @@
   "magnetic_zones": [],
   "lasers": [],
   "mines": [],
-  "stars_threshold": {"one_star": 0, "two_stars": 0, "three_stars": 0}
+  "star_requirements": {"one_star": 1, "two_stars": 3, "three_stars": 5}
 }

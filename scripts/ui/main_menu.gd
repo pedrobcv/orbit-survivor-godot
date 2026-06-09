@@ -45,8 +45,9 @@ func _animate_neon_pulse(scale_value: float) -> void:
 	var bright_color := Color(0.176, 0.243, 0.055, 1.0)
 	var t := (scale_value - 0.8) / 0.2
 	title_label.modulate = base_color.lerp(bright_color, t)
-	if title_label.get("theme_override_colors/font_color") != null:
-		title_label.add_theme_color_override("font_color", title_label.modulate)
+	if title_label.has_theme_color_override(&"font_color"):
+		title_label.remove_theme_color_override(&"font_color")
+	title_label.add_theme_color_override(&"font_color", title_label.modulate)
 
 
 func _on_play_pressed() -> void:
