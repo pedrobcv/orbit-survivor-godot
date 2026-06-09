@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://scripts/ui/game_hud.gd" id="1_7k8l9"]
 
@@ -74,7 +74,7 @@ anchors_preset = 0
 position = Vector2i(500, 40)
 size = Vector2i(140, 36)
 theme_override_font_sizes/font_size = 22
-text = "❤️❤️❤️"
+text = "♥ ♥ ♥"
 
 [node name="PauseButton" type="Button" parent="HUDPanel"]
 unique_name_in_owner = true
@@ -83,7 +83,7 @@ position = Vector2i(660, 36)
 size = Vector2i(48, 40)
 theme_override_colors/font_color = Color(1.000, 1.000, 1.000, 1.0)
 theme_override_font_sizes/font_size = 18
-text = "⏸"
+text = "ll"
 theme_override_styles/normal = SubResource("2_btn_normal")
 theme_override_styles/hover = SubResource("3_btn_hover")
 theme_override_styles/pressed = SubResource("3_btn_hover")
