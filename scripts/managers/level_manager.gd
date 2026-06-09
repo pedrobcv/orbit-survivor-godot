@@ -19,7 +19,7 @@ var _current_level_id: String = ""
 func load_level(level_id: String) -> void:
 	_level_unload_current()
 	var path := LEVELS_DIR + level_id + ".json"
-	if not ResourceLoader.exists(path):
+	if not FileAccess.file_exists(path):
 		push_error("LevelManager: Level file not found at ", path)
 		return
 

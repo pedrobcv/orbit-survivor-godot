@@ -83,7 +83,7 @@ func get_music_volume() -> float:
 ## Internal: Tries to load an audio file and play it.
 ## Returns true on success, false if file doesn't exist.
 func _try_load_and_play(player: AudioStreamPlayer2D, path: String) -> bool:
-	if not ResourceLoader.exists(path):
+	if not FileAccess.file_exists(path):
 		return false
 
 	var stream := load(path) as AudioStream

@@ -1,67 +1,61 @@
 extends Node
 
-## Central coordinator for all game managers.
-## Orchestrates game flow without knowing internal details of other managers.
+## Central coordinator for Orbit Survivor.
+## Manages scene transitions, game flow, and connects all autoloads.
 
-# Signals
-signal game_started
-signal game_over
-signal level_completed
-signal level_failed
-signal pause_toggled(is_paused: bool)
+# Scene paths
+const SCENES := {
+	"main_menu": "res://scenes/ui/main_menu.tscn",
+	"level_select": "res://scenes/ui/level_select.tscn",
+	"game": "res://scenes/levels/level_scene.tscn",
+	"settings": "res://scenes/ui/settings_screen.tscn",
+	"shop": "res://scenes/ui/shop_screen.tscn",
+	"credits": "res://scenes/ui/credits_screen.tscn"
+}
 
-# References to other managers (assigned externally or via autoload)
-var level_manager
-var save_manager
-var audio_manager
-var star_system
-var difficulty_manager
-
-var _is_paused: bool = false
+var _current_level: String = "level_01"
 
 
-## Starts a new game session.
-func start_game() -> void:
-	game_started.emit()
+func _ready() -> void:
+	# Connect to SignalBus for scene changes
+	SignalBus.scene_changed.connect(_on_scene_changed)
+	SignalBus.game_started.connect(_on_game_started)
+	SignalBus.level_selected.connect(_on_level_selected)
 
 
-## Ends the current game session (win or loss).
-func end_game(result: String = "") -> void:
-	game_over.emit()
-	if result == "victory":
-		level_completed.emit()
-	elif result == "defeat":
-		level_failed.emit()
+## Handles scene transitions from any UI
+func _on_scene_changed(from: String, to: String) -> void:
+	var path = SCENES.get(to)
+	if path and ResourceLoader.exists(path):
+		get_tree().change_scene_to_file(path)
+	else:
+		push_error("GameManager: Unknown scene '", to, "' or path not found")
 
 
-## Toggles pause state.
-func pause_game() -> void:
-	_is_paused = true
-	pause_toggled.emit(true)
+## Starts a new game from level 1
+func _on_game_started() -> void:
+	_current_level = "level_01"
+	_start_level()
 
 
-## Resumes from pause.
-func resume_game() -> void:
-	_is_paused = false
-	pause_toggled.emit(false)
+## Handles level selection from level_select or victory screen
+func _on_level_selected(level_id: String) -> void:
+	_current_level = level_id
+	_start_level()
 
 
-## Reloads the current level.
-func reload_level() -> void:
-	if level_manager:
-		var current_data = level_manager.get_current_level_data()
-		if current_data:
-			level_manager.load_level(current_data.get("id", ""))
+## Changes to the game scene with the current level
+func _start_level() -> void:
+	var path = SCENES.get("game")
+	if path and ResourceLoader.exists(path):
+		get_tree().change_scene_to_file(path)
 
 
-## Loads the next level in sequence.
-func load_next_level() -> void:
-	if level_manager:
-		var current_data = level_manager.get_current_level_data()
-		if current_data and current_data.has("next_level_id"):
-			level_manager.load_level(current_data["next_level_id"])
+## Returns the current level ID (called by level_scene.gd)
+func get_current_level() -> String:
+	return _current_level
 
 
-## Returns to the main menu (placeholder).
-func go_to_menu() -> void:
-	pass
+## Sets the current level ID (called before transitioning to game scene)
+func set_current_level(level_id: String) -> void:
+	_current_level = level_id

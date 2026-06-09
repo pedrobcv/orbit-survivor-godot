@@ -16,7 +16,7 @@ func _ready() -> void:
 
 ## Loads the difficulty scale data from JSON.
 func _load_difficulty_data() -> void:
-	if not ResourceLoader.exists(DIFFICULTY_FILE):
+	if not FileAccess.file_exists(DIFFICULTY_FILE):
 		push_error("DifficultyManager: scale.json not found at ", DIFFICULTY_FILE)
 		return
 

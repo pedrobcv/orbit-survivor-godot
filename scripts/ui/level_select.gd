@@ -32,7 +32,7 @@ func _load_all_levels() -> void:
 	for i in range(1, TOTAL_LEVELS + 1):
 		var level_id := "level_%02d" % i
 		var path := "res://data/levels/%s.json" % level_id
-		if not ResourceLoader.exists(path):
+		if not FileAccess.file_exists(path):
 			continue
 		var file := FileAccess.open(path, FileAccess.READ)
 		if file == null:
