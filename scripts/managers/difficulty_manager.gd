@@ -57,9 +57,20 @@ func get_enemy_count(level_id: String) -> int:
 
 
 ## Internal: retrieves a float value from the difficulty data for a specific level.
+## Looks up by level number extracted from level_id (e.g. "level_03" -> level 3).
 ## Returns the default value if the level or key doesn't exist.
 func _get_level_value(level_id: String, key: String, default: float) -> float:
-	var level_config = _difficulty_data.get("levels", {}).get(level_id, {})
-	if level_config.has(key):
-		return float(level_config[key])
+	var levels_array = _difficulty_data.get("levels", [])
+	if levels_array is Array:
+		# Extract level number from "level_XX"
+		var parts := level_id.split("_")
+		var level_num := 1
+		if parts.size() >= 2:
+			level_num = int(parts[1])
+		# Find matching level in array
+		for entry in levels_array:
+			if entry is Dictionary and entry.get("level", 0) == level_num:
+				if entry.has(key):
+					return float(entry[key])
+				return default
 	return default
